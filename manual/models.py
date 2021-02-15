@@ -1,4 +1,5 @@
 from django.db import models
+from adminsortable.models import SortableMixin
 
 class Section(models.Model):
     section_name = models.CharField(verbose_name='セクション', max_length=50, blank=False, null=True)
@@ -54,6 +55,9 @@ class Procedure(models.Model):
     procedure_name = models.TextField(verbose_name='作業手順', max_length=50, blank=False, null=True)
     img = models.ImageField(verbose_name='作業映像', upload_to='img/', blank=True, null=True)
     video = models.FileField(verbose_name='作業動画', upload_to='video/', blank=True, null=True)
+    point = models.TextField(verbose_name='ポイント', max_length=50, blank=True, null=True)
+    caution = models.TextField(verbose_name='注意点', max_length=50, blank=True, null=True)
+    tips = models.TextField(verbose_name='コツ', max_length=50, blank=True, null=True) 
     method = models.ForeignKey(Method, on_delete=models.CASCADE, blank=False, null=True)
 
     def __str__(self):
@@ -63,7 +67,7 @@ class Procedure(models.Model):
         verbose_name = '作業手順'
         verbose_name_plural = '作業手順'
 
-
+"""
 class Annotation(models.Model):
     point = models.TextField(verbose_name='ポイント', max_length=50, blank=True, null=True)
     caution = models.TextField(verbose_name='注意点', max_length=50, blank=True, null=True)
@@ -76,3 +80,4 @@ class Annotation(models.Model):
     class Meta:
         verbose_name = 'ポイント'
         verbose_name_plural = 'ポイント'
+"""

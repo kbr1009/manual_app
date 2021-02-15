@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'widget_tweaks',
     'manual',
+    'adminsortable',
 ]
 
 MIDDLEWARE = [
