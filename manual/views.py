@@ -12,7 +12,7 @@ class SectionListView(LoginRequiredMixin, ListView):
 
 class JobListView(LoginRequiredMixin, ListView):
     model = Job
-    template_name = 'manual/Job/job_list.html'
+    template_name = 'manual/job/job_list.html'
 
 
     def get_context_data(self, **kwargs):
@@ -28,7 +28,7 @@ class JobListView(LoginRequiredMixin, ListView):
 
 class ItemListView(LoginRequiredMixin, ListView):
     model = Item
-    template_name = 'manual/Item/item_list.html'
+    template_name = 'manual/item/item_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -39,8 +39,3 @@ class ItemListView(LoginRequiredMixin, ListView):
         job = self.job = get_object_or_404(Job, pk=self.kwargs['pk'])
         queryset = super().get_queryset().filter(job=job)
         return queryset
-
-
-class JobTitle(LoginRequiredMixin, ListView):
-    model = Job
-    template_name = 'manual/Item/item_list.html'
