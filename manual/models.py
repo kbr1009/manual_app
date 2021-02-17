@@ -70,7 +70,7 @@ class Procedure(SortableMixin):
     point = models.TextField(verbose_name='ポイント', max_length=50, blank=True, null=True)
     caution = models.TextField(verbose_name='注意点', max_length=50, blank=True, null=True)
     tips = models.TextField(verbose_name='コツ', max_length=50, blank=True, null=True) 
-    method = models.ForeignKey(Method, on_delete=models.CASCADE, blank=False, null=True)
+    method = models.ForeignKey(Method, on_delete=models.CASCADE, blank=False, null=True,related_name='procedure')
     the_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
 
     class Meta:

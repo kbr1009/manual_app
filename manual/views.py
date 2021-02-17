@@ -54,21 +54,3 @@ class MethodListView(LoginRequiredMixin, ListView):
         item = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
         queryset = super().get_queryset().filter(item=item)
         return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['procedure_list'] = Procedure.objects.all()
-        return context 
-
-
-
-
-"""
-        if Image.objects.filter(work_id=self.object.pk).exists():
-            image = Image.objects.values_list('image', flat=True).get(work_id=self.object.pk)
-        else:
-            # No Imageパス
-            image = settings.MEDIA_URL + NO_IMAGE
-        context['image'] = image
-        return context
-"""
