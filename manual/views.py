@@ -51,6 +51,18 @@ class MethodListView(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        item = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
+        job = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
         queryset = super().get_queryset().filter(item=item)
         return queryset
+
+
+    def get_context_data(self, **kwargs):
+        context2 = super(MethodListView, self).get_context_data(**kwargs)
+        context2.update({
+            'procedure_list': Procedure.objects.all(),
+        })
+        return context2
+
+    def get_queryset(self):
+        return Method.objects.all()
+# https://teratail.com/questions/204421
