@@ -51,18 +51,24 @@ class MethodListView(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        job = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
+        item = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
         queryset = super().get_queryset().filter(item=item)
         return queryset
 
-
     def get_context_data(self, **kwargs):
-        context2 = super(MethodListView, self).get_context_data(**kwargs)
-        context2.update({
-            'procedure_list': Procedure.objects.all(),
-        })
-        return context2
+        context = super().get_context_data(**kwargs)
+        context['procedure_list'] = Procedure.objects.all()
+        return context 
 
-    def get_queryset(self):
-        return Method.objects.all()
-# https://teratail.com/questions/204421
+
+
+
+"""
+        if Image.objects.filter(work_id=self.object.pk).exists():
+            image = Image.objects.values_list('image', flat=True).get(work_id=self.object.pk)
+        else:
+            # No Imageパス
+            image = settings.MEDIA_URL + NO_IMAGE
+        context['image'] = image
+        return context
+"""
