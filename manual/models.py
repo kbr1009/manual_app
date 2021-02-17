@@ -63,6 +63,8 @@ class Method(SortableMixin):
 #作業手順
 class Procedure(SortableMixin):
     procedure_name = models.TextField(verbose_name='5.作業手順', max_length=50, blank=False, null=True)
+    purpose = models.CharField('目的', max_length=20, blank=False, null=True)
+    success = models.CharField('達成基準', max_length=20, blank=True, null=True)
     img = models.ImageField(verbose_name='作業映像', upload_to='img/', blank=True, null=True)
     video = models.FileField(verbose_name='作業動画', upload_to='video/', blank=True, null=True)
     point = models.TextField(verbose_name='ポイント', max_length=50, blank=True, null=True)
@@ -79,18 +81,3 @@ class Procedure(SortableMixin):
     def __str__(self):
         return self.procedure_name
 
-
-"""
-class Annotation(models.Model):
-    point = models.TextField(verbose_name='ポイント', max_length=50, blank=True, null=True)
-    caution = models.TextField(verbose_name='注意点', max_length=50, blank=True, null=True)
-    tips = models.TextField(verbose_name='コツ', max_length=50, blank=True, null=True) 
-    procedure = models.ForeignKey(Procedure, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.point_name
-
-    class Meta:
-        verbose_name = 'ポイント'
-        verbose_name_plural = 'ポイント'
-"""

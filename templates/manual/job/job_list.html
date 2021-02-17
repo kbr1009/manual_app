@@ -1,45 +1,33 @@
 {% extends "manual/base.html" %}
-
 {% block content %}
-
 <div class="container">
   <h1>作業の種類一覧</h1>
-
   <div class="card-columns">
-    {% for j in job_list %}
-    <a href="{% url 'manual:item_list' j.pk  %}" class="card"> <!-- aタグに変更 -->
+    {% for b in job_list %}
+    <a href="{% url 'manual:item_list' b.pk  %}" class="card"> <!-- aタグに変更 -->
       <div class="card-body">
-        <h5 class="card-title">{{ j.job_name }} ▶︎</h5>
+        <h5 class="card-title">{{ b.job_name }} ▶︎</h5>
       </div>
     </a> <!-- aタグに変更 -->
     {% endfor %}
   </div>
-
 </div>
-
 <style>
 body {
   padding-top: 70px;
 }
-
 .home {
   display: table-cell !important;
 }
-
 .list {
   width: 240px;
   height: 100%;
 }
-
 .card-title {
   text-align: center;
 }
-
-
 .h5, h5 {
   font-size: 1.50rem;
 }
-
 </style>
-
 {% endblock %}
