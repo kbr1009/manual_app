@@ -13,6 +13,8 @@ https://qiita.com/ramuneru/items/32fbf3032b625f71b69d
 
  Djangoモデルフィールドのnullとblankの違いを理解する
 https://djangobrothers.com/blogs/django_null_blank/
+Djangoでリレーション先はどう表示するの？ 【ListView編】
+https://qiita.com/ragnar1904/items/1afaeb6601cc490fb70a
 
 
 <デプロイ>

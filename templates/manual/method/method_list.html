@@ -1,11 +1,13 @@
 {% extends "manual/base.html" %}
 {% block content %}
-  {% for d in method_list %}
-  <p>{{ d.method_name }}</p>
 
-    {% for e in procedure_list %}
-    <p>{{ e.procedure_name }}</p>
+  {% for d in method_list %}
+    <p>{{ d.method_name }}</p>
+
+    {% for procedure in d.procedure.all %}
+      <p>{{ procedure }}</p>
     {% endfor %}
 
   {% endfor %}
+
 {% endblock %}
