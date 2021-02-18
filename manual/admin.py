@@ -33,17 +33,3 @@ admin.site.register(Job, JobAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Method, MethodAdmin)
 admin.site.register(Procedure, ProcedureAdmin)
-
-
-
-
-
-
-
-
-
-
-"""
-myModels = [Section, Job, Item, Method, Procedure]
-admin.site.register(myModels)
-"""
