@@ -1,17 +1,76 @@
-{% extends "manual/base.html" %}
-{% block content %}
+{% load static %}
+<meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">    
+    <link rel="stylesheet" href="{% static 'css/4/cssreset-min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.1.0/css/drawer.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/4/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/4/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/4/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/4/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/4/post.css' %}">
 
-  {% for d in method_list %}
-    <p>{{ d.method_name }}</p>
+    <link rel="stylesheet" href="{% static 'css/4/print.css' %}" media="print">
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css">
+    <body class="drawer drawer--left" style="position: relative; min-height: 100%; top: 0px;">
+      <section>
+        <div id="container">
+          <div class="categoryContentArea">
+            <h2>目的</h2>
+            <div class="categoryContent">
+              <ol>
+                <li>{{ method.purpose }}</li>
+              </ol>
+            </div>
+          </div>
 
-    {% for procedure in d.procedure.all %}
-      <p>{{ procedure.procedure_name }}</p>
-      <p>{{ procedure.point }}</p>
-      <p>{{ procedure.caution }}</p>
-      <p>{{ procedure.tips }}</p>
-      <img src='{{ MEDIA_URL }}{{procedure.img}}' width=100>
-    {% endfor %}
+          <div class="categoryContentArea">
+            <h2>達成基準</h2>
+            <div class="categoryContent">
+              <ol>
+                <li>{{ method.success }}</li>
+              </ol>
+            </div>
+          </div>
 
-  {% endfor %}
 
-{% endblock %}
+{% for d in method_list %}
+         <div class="detailFlowArea">
+           <div class="detailFlowAreaNum">0{{ d.id }}</div>
+            <div class="detailFlowAreaContent">
+              <h2>{{ d.method_name }}</h2>
+              {% for procedure in d.procedure.all %}
+              <ul>
+                <li>
+                  <div class="detailFlowAreaContentText" id="">
+                    <p>{{ procedure.procedure_name }}</p>
+                    <div class="notes">
+                      <div class="notes-inner point">
+                        <p>{{ procedure.point }}</p>
+                      </div>
+                      <div class="notes-inner attention">
+                        <p>{{ procedure.caution }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="detailFlowAreaContentImg">
+                    <img src="   " class="list" data-toggle="modal" data-target="#image_myModal20" alt="">
+                    <div class="modal fade" id="image_myModal20">
+                      <div class="modal-dialog">
+                        <div class="modal-body modal-image">
+                          <img src="  " alt="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {% endfor %}
+            </div>
+          </div>
+{% endfor %}
+

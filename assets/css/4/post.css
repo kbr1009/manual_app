@@ -1,0 +1,492 @@
+
+
+/* フォーム */
+select, button, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select::-ms-expand {
+  display: none;
+}
+
+.main_form [class*="btnarea"]{
+  margin: 20px 0 0;
+}
+[class*="btnarea"][class*="center"]{
+  text-align: center;
+}
+.submit_btn{
+  display: inline-block;
+  padding: 0 50px;
+  background: #00A0E9;
+  font: 700 14px/50px 'noto sans japanese';
+  border: none;
+  border-bottom: 4px solid #3B4F67;
+  color: #fff;
+  border-radius: 5px;
+  transition: all .0s;
+}
+.submit_btn:hover{
+  border-bottom: 0;
+  margin-top: 4px;
+}
+
+.main_form .submit {
+  padding: 25px 0 20px;
+  text-align: center;
+}
+
+.main_form .submit button, .main_form .submit a {
+  color: #fff;
+  font: 700 16px/1em 'noto sans japanese';
+  padding: 15px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background: #F39801;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,.18);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,.18);
+}
+
+.select_wrap {
+  position: relative;
+}
+.select_wrap:before {
+  content: "\f107";
+  color: #333;
+  font: 900 16px/1em 'fontawesome';
+  position: absolute;
+  top: 50%;
+  right: 58px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+input[type="file"] {
+  display: none;
+}
+.file_wrap label {
+  font: 400 12px/1em 'noto sans japanese';
+  background: #fff;
+  padding: 8px 30px;
+  border-radius: 4px;
+  border: 2px solid #4ba2e5;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.file_wrap label::after {
+  content: "選択されていません";
+  font: 500 12px/1em 'noto sans japanese';
+  height: 20px;
+  line-height: 20px;
+  position: absolute;
+  right: -130px;
+  top: calc(50% - 10px);
+}
+.file_wrap label.changed::after {
+  content: "";
+}
+.file_wrap .filename {
+  font-size: 12px;
+  margin: 0 0 0 20px;
+}
+.radio_wrap label + label{
+  margin: 0 0 0 20px;
+}
+.radio_wrap label input{
+  margin: 0 5px 0 0;
+}
+
+/* ! 投稿カテゴリー ================================================== */
+/* 検索 */
+.search_post > div{
+  display: flex;
+  align-items: center;
+}
+/*
+.catSearchArea pre{
+  overflow: hidden;
+}
+*/
+.search_post .catSearch{
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 10px;
+}
+
+/* 新規投稿 */
+.search_post .newpost{
+  flex: 0 0 200px;
+  text-align: right;
+  margin: 0 0 0 30px;
+}
+.search_post .newpost a{
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  padding: 8px 40px 8px 30px;
+  font: 600 18px/1.5em 'noto sans japanese';
+  background: #00A0E9;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: relative;
+}
+.search_post .newpost a:before{
+  content: "\f0f6";
+  font: normal normal normal 18px/1 FontAwesome;
+  margin: 0 10px 0 0;
+}
+.search_post .newpost a:hover{
+  color: #00A0E9;
+  background: #fff;
+  border: 2px solid #00A0E9;
+}
+
+/* ! 新規投稿 ================================================== */
+#add_post .main_form{
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.list_post{
+  margin: -10px;
+}
+.list_post > li{
+  padding: 10px;
+}
+.list_post article{
+  position: relative;
+  border: 2px solid #fff;
+  padding: 16px;
+  border-radius: 4px;
+  transition: all .3s;
+}
+.list_post article:hover{
+  border: 2px solid #F39801;
+}
+.list_post .mypost article:before{
+  content: "";
+  background: url(../img/common/ico_man_orange.svg) no-repeat center center;
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 19px;
+  right: 88px;
+}
+.list_post article > a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.list_post article .head{
+  display: flex;
+  align-items: center;
+  margin: 0 0 4px;
+}
+.list_post article .list_tag{
+  margin-left: auto;
+}
+
+.list_post .date{
+  color: #666;
+  font: 500 14px/1.2em 'Quicksand';
+  margin: 0;
+}
+.list_post p{
+  font: 500 13px/1.5em 'noto sans japanese';
+  display: flex;
+  margin: 0;
+}
+.list_post p span{
+  color: #888;
+  font: 300 12px/1.5em 'noto sans japanese';
+  flex: 0 0 74px;
+}
+.list_post ul{
+  margin: -2px;
+}
+.list_post ul li{
+  padding: 2px;
+}
+
+/* 公開非公開タグ */
+.list_tag > li{
+  font: 900 10px/1.2em 'noto sans japanese';
+  color: #ccc;
+  line-height: 20px;
+  background: #fff;
+  border: 2px solid #ccc;
+  width: 60px;
+  text-align: center;
+}
+.list_tag > li.public{
+  color: #00A0E9;
+  border: 2px solid #00A0E9;
+}
+.list_tag > li.no_approval{
+  color: #f65d5d;
+  border: 2px solid #f65d5d;
+}
+.list_tag > li + li{
+  margin-left: 4px;
+}
+
+/* ! 投稿詳細 ================================================== */
+.post_detail{
+  padding: 40px 0 20px;
+}
+.post_detail .main_form,
+.post_answer > div{
+  padding: 25px;
+  border-radius: 5px;
+}
+.list_postinfo > li + li{
+  margin: 20px 0 0;
+}
+.list_postinfo > li{
+  font: 500 14px/1.2em 'noto sans japanese';
+}
+.list_postinfo > li > p{
+  color: #666;
+  font: 400 12px/1.2em 'noto sans japanese';
+  margin: 0 0 4px;
+}
+.post_detail .input_area{
+  font: 500 14px/1.5em 'noto sans japanese';
+}
+.post_detail img,
+.post_detail video{
+  width: 100%;
+}
+
+/* 回答 */
+.post_answer{
+  padding: 0 0 40px;
+}
+.post_answer .ttl{
+  font: 500 14px/1.2em 'noto sans japanese';
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  background: #F39801;
+  padding: 6px 20px;
+  border-radius: 3px;
+}
+
+
+
+
+/* ! 目次 ==================================================================================================== */
+
+/* 全て展開 */
+.list_table .toggle_category{
+  position: relative !important;
+}
+.all_view_wrap{
+  position: relative;
+  width: 100%;
+  display: block;
+  padding: 10px 0;
+}
+.all_view{
+  font: 600 15px/1em 'noto sans japanese';
+  padding: 15px 10px 15px 50px;
+  background: #009eec;
+  color: white;
+  border: solid 1px #ccc; 
+  border-radius: 4px;
+  outline: none !important;
+  width: 100%;
+  cursor: pointer;
+}
+.all_view:hover{
+  border: solid 1px white;
+}
+.all_view_wrap:before{
+  content: '';
+  display: inline-block;
+  width: 120px;
+  pointer-events: none;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: url(../img/common/ico_folder_allopened.svg)no-repeat center left;
+  background-size: contain;
+}
+
+.list_table  article{
+  background: #fff;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  display: flex;
+  position: relative;
+  transition: all .3s;
+}
+.list_table  article:hover{
+  border: 2px solid #F39801;
+}
+
+
+.list_table  li:nth-of-type(2) > article{
+  border-radius: 5px 5px 0 0;
+}
+.list_table  li:last-child > article{
+  border-radius: 0 0 5px 5px;
+}
+.list_table  li > article.current{
+  border-radius: 0 0 5px 5px;
+}
+.list_table  li:nth-of-type(2) > article.current{
+  border-radius: 5px;
+}
+.list_table  li > article.current_next{
+  border-radius: 5px 5px 0 0;
+}
+.list_table  li:nth-of-type(2){
+  border: none;
+}
+.list_table  article:before{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: block;
+    width: 10px;
+    height: 20px;
+    content: '\f054';
+    font-family: FontAwesome;
+    color: #F39801;
+    bottom: 0;
+    margin: auto;
+}
+.list_table article > a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+.list_table .ttl{
+  font: 700 16px/1em 'noto sans japanese';
+  margin: 0;
+  padding: 10px 20px;
+}
+.list_table .ttl:before{
+  content: "";
+  background: url(../img/common/ico_folder_closed.svg) no-repeat center center !important;
+  background-size: contain !important;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.list_table article.current .ttl:before{
+  background: url(../img/common/ico_folder_opened.svg) no-repeat center center !important;
+  background-size: contain !important;
+  width: 39px;
+  height: 39px;
+}
+
+.list_table  li + li{
+  border-top: 1px solid #f1f1f1;
+}
+.list_table .toggle_category{
+  position: inherit;
+  display: block;
+  font: 500 18px/1em 'noto sans japanese';
+  border-left: 6px solid #F39831;
+  padding: 3px 20px;
+  margin: 18px 0 10px;
+}
+.list_table .toggle_category small {
+  font: 500 15px/1em 'noto sans japanese';
+  padding: 0 0 0 20px;
+  color: #333;
+}
+.list_table .toggle_category small b{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 8.7px;
+  border-color: transparent transparent transparent #009eec;
+  display: inline-block;
+  margin: 0 2px 0 0;
+}
+.list_table .toggle_contents{
+  position: relative;
+  display: inline-block;
+  top: 0;
+  margin: 0;
+  padding: 18px;
+  width: 85px;
+}
+.list_table .toggle_contents:before{
+  content: "";
+  background: url(../img/common/ico_triangle_blue.svg) no-repeat center center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  transform: translateY(-50%);
+}
+.list_table .toggle_contents.current:before,
+.list_table .toggle_contents:hover:before{
+  transform: translateY(-50%) rotate(90deg);
+}
+.list_table .toggle_contents.current:hover:before{
+  transform: translateY(-50%);
+}
+.list_table .toggle_contents:hover {
+  opacity: .8;
+}
+
+
+/* 第二回層目以降 */
+[class*="toggle_under"]{
+  margin: 0 0 30px;
+}
+.toggle_under01{
+  max-width: 800px;
+  margin-left: auto;
+}
+.toggle_under02{
+  max-width: 740px;
+  margin-left: auto;
+}
+.toggle_under03{
+  max-width: 680px;
+  margin-left: auto;
+}
+.list_table .toggle_under03 .ttl{
+  padding: 0;
+}
+.list_table .toggle_under03 .ttl:before{
+  display: none;
+}
+
+
+
+
+
