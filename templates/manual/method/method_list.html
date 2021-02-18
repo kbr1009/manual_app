@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/4/bootstrap-theme.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/4/common.css' %}">
     <link rel="stylesheet" href="{% static 'css/4/post.css' %}">
-
+    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/4/print.css' %}" media="print">
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css">
     <body class="drawer drawer--left" style="position: relative; min-height: 100%; top: 0px;">
@@ -23,7 +23,7 @@
             <h2>目的</h2>
             <div class="categoryContent">
               <ol>
-                <li>{{ method.purpose }}</li>
+                <li>{{ item.purpose }}</li>
               </ol>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <h2>達成基準</h2>
             <div class="categoryContent">
               <ol>
-                <li>{{ method.success }}</li>
+                <li>{{ item.success }}</li>
               </ol>
             </div>
           </div>

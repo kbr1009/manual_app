@@ -62,6 +62,18 @@ class Item(SortableMixin):
             blank=False, 
             null=True
             )
+    purpose = models.CharField(
+            verbose_name='目的', 
+            max_length=100, 
+            blank=True, 
+            null=True
+            )
+    success = models.CharField(
+            verbose_name='達成基準', 
+            max_length=100, 
+            blank=True, 
+            null=True
+            )
     job = models.ForeignKey(
             Job, 
             on_delete=models.CASCADE, 
@@ -88,18 +100,6 @@ class Method(SortableMixin):
     method_name = models.CharField(
             verbose_name='4.作業方法',
             max_length=50, blank=False, 
-            null=True
-            )
-    purpose = models.CharField(
-            verbose_name='目的', 
-            max_length=100, 
-            blank=True, 
-            null=True
-            )
-    success = models.CharField(
-            verbose_name='達成基準', 
-            max_length=100, 
-            blank=True, 
             null=True
             )
     item = models.ForeignKey(
