@@ -49,12 +49,16 @@
                   <div class="detailFlowAreaContentText" id="">
                     <p>{{ procedure.procedure_name }}</p>
                     <div class="notes">
+                      {% if procedure.point %}
                       <div class="notes-inner point">
                         <p>{{ procedure.point }}</p>
                       </div>
+                      {% endif %}
+                      {% if procedure.caution %}
                       <div class="notes-inner attention">
                         <p>{{ procedure.caution }}</p>
                       </div>
+                      {% endif %}
                     </div>
                   </div>
                   <div class="detailFlowAreaContentImg">
