@@ -20,3 +20,6 @@ https://qiita.com/ragnar1904/items/1afaeb6601cc490fb70a
 <デプロイ>
 Django + Heroku + WhiteNoise + AWS S3 によるWebアプリのデプロイ
 https://qiita.com/knakajima3027/items/f8d10e3066fbcde117d3
+
+cloudinaryを使ってherokuでDjangoアプリの画像投稿を可能にする
+https://qiita.com/koki276/items/4f78ca421bea059d7b7a
