@@ -26,3 +26,7 @@ https://qiita.com/koki276/items/4f78ca421bea059d7b7a
 
 Django+cloudinaryで画像をアップロードする方法
 https://developer.yukimonkey.com/article/20200214/
+
+空欄画像を表示させたくない
+https://teratail.com/questions/303482
+https://qiita.com/YaCpotato/items/d4c1d3e99415c795a7f5
