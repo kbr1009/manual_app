@@ -1,12 +1,12 @@
 {% extends "manual/base.html" %}
 {% block content %}
 <div class="container">
-  <h1>作業手順</h1>
+  <h1>{{ job }}の作業手順</h1>
   <div class="card-columns">
     {% for c in item_list %}
     <a href="{% url 'manual:method_list' c.pk  %}" class="card">
       <div class="card-body">
-        <h5 class="card-title">{{ c.item_name }}</h5>
+        <h5 class="card-title">{{ c.id }}.{{ c.item_name }}</h5>
       </div>
     </a>
     {% endfor %}

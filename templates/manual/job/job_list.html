@@ -1,7 +1,7 @@
 {% extends "manual/base.html" %}
 {% block content %}
 <div class="container">
-  <h1>作業の種類一覧</h1>
+  <h1>{{ section }}の作業一覧</h1>
   <div class="card-columns">
     {% for b in job_list %}
     <a href="{% url 'manual:item_list' b.pk  %}" class="card"> <!-- aタグに変更 -->
