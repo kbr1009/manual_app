@@ -23,3 +23,6 @@ https://qiita.com/knakajima3027/items/f8d10e3066fbcde117d3
 
 cloudinaryを使ってherokuでDjangoアプリの画像投稿を可能にする
 https://qiita.com/koki276/items/4f78ca421bea059d7b7a
+
+Django+cloudinaryで画像をアップロードする方法
+https://developer.yukimonkey.com/article/20200214/
