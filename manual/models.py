@@ -132,18 +132,6 @@ class Procedure(SortableMixin):
             blank=False, 
             null=True
             )
-    img = models.ImageField(
-            verbose_name='画像', 
-            upload_to='img/', 
-            blank=True, 
-            null=True
-            )
-    video = models.FileField(
-            verbose_name='動画', 
-            upload_to='video/', 
-            blank=True, 
-            null=True
-            )
     point = models.TextField(
             verbose_name='ポイント', 
             max_length=200, 
@@ -162,6 +150,18 @@ class Procedure(SortableMixin):
             blank=True, 
             null=True
             ) 
+    img = models.ImageField(
+            verbose_name='画像', 
+            upload_to='img/', 
+            blank=True, 
+            null=True
+            )
+    video = models.FileField(
+            verbose_name='動画', 
+            upload_to='video/', 
+            blank=True, 
+            null=True
+            )
     method = models.ForeignKey(
             Method, 
             on_delete=models.CASCADE, 
