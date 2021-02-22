@@ -92,9 +92,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets')
@@ -110,6 +108,8 @@ LOGOUT_REDIRECT_URL ='/login'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 """
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 
 try:
