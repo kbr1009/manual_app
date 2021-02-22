@@ -133,13 +133,13 @@ class Procedure(SortableMixin):
             null=True
             )
     img = models.ImageField(
-            verbose_name='作業映像', 
+            verbose_name='画像', 
             upload_to='img/', 
             blank=True, 
             null=True
             )
     video = models.FileField(
-            verbose_name='作業動画', 
+            verbose_name='動画', 
             upload_to='video/', 
             blank=True, 
             null=True

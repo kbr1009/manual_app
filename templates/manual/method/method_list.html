@@ -61,20 +61,32 @@
                       {% endif %}
                     </div>
                   </div>
+
                   <div class="detailFlowAreaContentImg">
-                    <img src="   " class="list" data-toggle="modal" data-target="#image_myModal20" alt="">
-                    <div class="modal fade" id="image_myModal20">
+                    {% if procedure.img %}
+                    <img src="{{ MEDIA_URL }}{{ procedure.img }}" class="list" data-toggle="modal" data-target="#image_myModal353" alt=""/>              
+                    <div class="modal fade" id="image_myModal353">
                       <div class="modal-dialog">
                         <div class="modal-body modal-image">
-                          <img src="  " alt="">
+                          <img src="{{ MEDEA_URL }}{{ procedure.img }}" alt=""/>                  
                         </div>
                       </div>
                     </div>
+                    {% endif %}
+                    {% if procedure.video %}
+                    <video controls preload="auto" class='list'>
+                      <source src="{{ MEDIA_URL }}{{ procedure.video }}" type='video/mp4'>
+                    </video>
+                    <!--
+                    <p class="ico_video">test</p>
+                    -->
+                    {% endif %}
                   </div>
+
                 </li>
               </ul>
               {% endfor %}
             </div>
-          </div>
-{% endfor %}
+         </div>
+         {% endfor %}
 
