@@ -3,8 +3,6 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '1=mfk(@%jlae0+&p2u*@@7l_5f4_*zg&e!te)1@xlw5(5fsa5$'
-
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
@@ -107,7 +105,9 @@ LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/manual/top'
 LOGOUT_REDIRECT_URL ='/login'
 
+"""
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+"""
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
