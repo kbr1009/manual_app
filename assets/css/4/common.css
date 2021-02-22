@@ -433,11 +433,12 @@ h1 span.unread{
   transform: translate(0,-50%);
   opacity: .5;
 }
+/*
 .drawer-nav li a[class*="ico_"][class*="question"]:before{
   background: url(../img/common/ico_question.svg)no-repeat center;
   background-size: contain;
 }
-
+*/
 .drawer-nav li a:hover{
 	text-decoration: none;
 }
@@ -543,7 +544,9 @@ h1 span.unread{
 .news_alert i:after,
 .news_alert.type_svg:after{
   content: "";
+/*
   background: url(../img/common/ico_notice.svg) no-repeat center center;
+*/
   background-size: contain;
   width: 15px;
   height: 15px;
@@ -602,7 +605,9 @@ h1 span.unread{
 }
 .headerPostList .notice:before{
   content: "";
+/*
     background: url(../img/common/ico_notice.svg) no-repeat center center;
+*/
     background-size: contain;
     width: 13px;
     height: 13px;
@@ -3050,11 +3055,7 @@ table.training_check .description{
   width: 25px; height: 25px;
   background: #eee;
 }
-.ico_image:before{
-  background: url(../img/common/ico_image.svg)no-repeat center;
-  background-size: contain;
-}
-p.ico_video {
+.ico_video {
   padding: 10px 10px 10px 45px;
   background: #000;
   color: white;
@@ -3063,15 +3064,6 @@ p.ico_video {
 }
 .tabAreaContent p.ico_video{
   margin: -10px 5px 10px;
-}
-.ico_video:before{
-  background: url(../img/common/ico_video.svg)no-repeat center;
-  background-size: contain;
-}
-.ico_video:not(.txt):before{
-  background: url(../img/common/ico_video_white.svg)no-repeat center;
-  background-size: contain;
-  left: 10px;  
 }
 
 /* ------------------------------
@@ -3145,7 +3137,6 @@ p.ico_video {
   width: 30px;
   height: 30px;
   display: block;
-  background: url(../../img/common/ico_meeting.svg)no-repeat center center;
   background-size: contain;
 }
 
@@ -3255,7 +3246,6 @@ p.ico_video {
 }
 .btnStop:before{
 	content: '';
-	background: url("../img/common/icon_stop.svg")no-repeat center;
   background-size: 12px;
   width: 13px;
   height: 13px;
@@ -3275,7 +3265,6 @@ p.ico_video {
   color: #F39801;
 }
 .btnStop:hover:before{
-	background: url("../img/common/icon_stop_hv.svg")no-repeat center;
   background-size: 12px;
 }
 
@@ -3661,7 +3650,6 @@ p.ico_video {
   background: #2e2e2e;
 }
 .exams .side a.pass span{
-  background: url("../img/common/ico_exams_pass.svg") no-repeat center center;
   background-size: contain;
 }
 
@@ -3669,7 +3657,6 @@ p.ico_video {
   background: #00A0E9;
 }
 .exams .side a.next span{
-  background: url("../img/common/ico_exams_next.svg") no-repeat center center;
   background-size: contain;
   width: 14px;
   height:14px;
@@ -3680,7 +3667,6 @@ p.ico_video {
   background: #F29700;
 }
 .exams .side a.result span{
-  background: url("../img/common/ico_exams_result.svg") no-repeat center center;
   background-size: contain;
   width: 18px;
   height:18px;
@@ -3742,17 +3728,14 @@ p.ico_video {
   margin: 5px auto 0 auto;
 }
 .exams .result_correct span{
-  background: url("../img/common/ico_result_correct.svg") no-repeat center center;
   background-size: contain;
 }
 .exams .result_wrong span{
-  background: url("../img/common/ico_result_wrong.svg") no-repeat center center;
   background-size: contain;
   width: 27px;
   height:27px;
 }
 .exams .result_pass span{
-  background: url("../img/common/ico_result_pass.svg") no-repeat center center;
   background-size: contain;
 }
 .exams .result .number{

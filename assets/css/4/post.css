@@ -173,7 +173,6 @@ input[type="file"] {
 }
 .list_post .mypost article:before{
   content: "";
-  background: url(../img/common/ico_man_orange.svg) no-repeat center center;
   background-size: contain;
   width: 18px;
   height: 18px;
@@ -324,7 +323,6 @@ input[type="file"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: url(../img/common/ico_folder_allopened.svg)no-repeat center left;
   background-size: contain;
 }
 
@@ -388,7 +386,6 @@ input[type="file"] {
 }
 .list_table .ttl:before{
   content: "";
-  background: url(../img/common/ico_folder_closed.svg) no-repeat center center !important;
   background-size: contain !important;
   width: 35px;
   height: 35px;
@@ -399,7 +396,6 @@ input[type="file"] {
   pointer-events: none;
 }
 .list_table article.current .ttl:before{
-  background: url(../img/common/ico_folder_opened.svg) no-repeat center center !important;
   background-size: contain !important;
   width: 39px;
   height: 39px;
@@ -440,7 +436,6 @@ input[type="file"] {
 }
 .list_table .toggle_contents:before{
   content: "";
-  background: url(../img/common/ico_triangle_blue.svg) no-repeat center center;
   background-size: contain;
   width: 20px;
   height: 20px;
