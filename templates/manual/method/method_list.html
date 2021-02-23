@@ -75,15 +75,13 @@
                   <img src="{{ MEDIA_URL }}{{ procedure.img }}" class="list" data-toggle="modal" data-target="#image_myModal353" alt=""/>
                   <!-- </a> -->
 
-<!--
                   <div class="modal fade" id="image_myModal353">
                     <div class="modal-dialog">
                       <div class="modal-body modal-image">
-                        <img src="" alt=""/> 
+                        <img src="{{ MEDIA_URL }}{{ procedure.img }}" alt=""/> 
                       </div>
                     </div>
                   </div>
--->
                   {% endif %}
                   {% if procedure.video %}
                   <video controls preload="auto" class='list'>
