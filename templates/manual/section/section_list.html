@@ -1,13 +1,15 @@
 {% extends "manual/base.html" %}
 {% block content %}
 <div class="container">
-  <h1>Home</h1>
+  <h1>セクション一覧</h1>
   <div class="card-columns">
-    <a href="{% url 'manual:section_list' %}" class="card"> <!-- aタグに変更 -->
+    {% for a in section_list %}
+    <a href="{% url 'manual:job_list' a.pk %}" class="card"> <!-- aタグに変更 -->
       <div class="card-body">
-        <h5 class="card-title">マニュアル一覧 ▶︎</h5>
+        <h5 class="card-title">{{ a.section_name }} ▶︎</h5>
       </div>
     </a> <!-- aタグに変更 -->
+    {% endfor %}
   </div>
 </div>
 <style>

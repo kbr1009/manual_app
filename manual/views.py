@@ -1,14 +1,18 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import TemplateView, ListView
 from .models import Section, Job, Item, Method, Procedure
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.shortcuts import get_object_or_404
 
 
+class TopView(LoginRequiredMixin, TemplateView):
+    template_name = 'manual/top.html'
+
+
 class SectionListView(LoginRequiredMixin, ListView):
     model = Section 
-    template_name = 'manual/top.html'
+    template_name = 'manual/section/section_list.html'
 
 
 class JobListView(LoginRequiredMixin, ListView):
