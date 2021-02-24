@@ -6,7 +6,7 @@
     {% for c in item_list %}
     <a href="{% url 'manual:method_list' c.pk  %}" class="card">
       <div class="card-body">
-        <h5 class="card-title">{{ c.id }}.{{ c.item_name }}</h5>
+        <h5 class="card-title">{{ forloop.counter }}.{{ c.item_name }}</h5>
       </div>
     </a>
     {% endfor %}
