@@ -14,17 +14,17 @@ class JobAdmin(SortableAdmin):
 
 
 class ItemAdmin(SortableAdmin):
-    list_display = ('id', 'item_name', 'job')
+    list_display = ('id', 'item_name', 'item_section', 'job')
     list_display_links = ('id', 'item_name')
 
 
 class MethodAdmin(SortableAdmin):
-    list_display = ('id', 'method_name', 'item')
+    list_display = ('id', 'method_name','method_section', 'method_job', 'item')
     list_display_links = ('id', 'method_name')
 
 
 class ProcedureAdmin(SortableAdmin):
-    list_display = ('id', 'procedure_name', 'method')
+    list_display = ('id', 'procedure_name', 'procedure_section', 'procedure_job', 'procedure_item', 'method')
     list_display_links = ('id', 'procedure_name')
 
 
