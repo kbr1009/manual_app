@@ -43,7 +43,7 @@
 
         {% for d in method_list %}
         <div class="detailFlowArea">
-          <div class="detailFlowAreaNum">0{{ d.id }}</div>
+          <div class="detailFlowAreaNum">{{ forloop.counter }}</div>
           <div class="detailFlowAreaContent">
             <h2>{{ d.method_name }}</h2>
             {% for procedure in d.procedure.all %}
