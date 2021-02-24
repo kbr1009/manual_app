@@ -74,8 +74,16 @@ class Item(SortableMixin):
             blank=True, 
             null=True
             )
+    item_section = models.ForeignKey(
+            Section, 
+            verbose_name='属するセクション', 
+            on_delete=models.CASCADE, 
+            blank=False, 
+            null=True
+            )
     job = models.ForeignKey(
             Job, 
+            verbose_name='属する作業名', 
             on_delete=models.CASCADE, 
             blank=False, 
             null=True
@@ -102,8 +110,23 @@ class Method(SortableMixin):
             max_length=50, blank=False, 
             null=True
             )
+    method_section = models.ForeignKey(
+            Section, 
+            verbose_name='属するセクション', 
+            on_delete=models.CASCADE, 
+            blank=False, 
+            null=True
+            )
+    method_job = models.ForeignKey(
+            Job, 
+            verbose_name='属する作業名', 
+            on_delete=models.CASCADE, 
+            blank=False, 
+            null=True
+            )
     item = models.ForeignKey(
             Item, 
+            verbose_name='属する作業項目',
             on_delete=models.CASCADE, 
             blank=False, 
             null=True
@@ -162,8 +185,30 @@ class Procedure(SortableMixin):
             blank=True, 
             null=True
             )
+    procedure_section = models.ForeignKey(
+            Section, 
+            verbose_name='属するセクション', 
+            on_delete=models.CASCADE, 
+            blank=False, 
+            null=True
+            )
+    procedure_job = models.ForeignKey(
+            Job, 
+            verbose_name='属する作業名', 
+            on_delete=models.CASCADE, 
+            blank=False, 
+            null=True
+            )
+    procedure_item = models.ForeignKey(
+            Item, 
+            verbose_name='属する作業項目',
+            on_delete=models.CASCADE, 
+            blank=False, 
+            null=True
+            )
     method = models.ForeignKey(
             Method, 
+            verbose_name='属する作業方法',
             on_delete=models.CASCADE, 
             blank=False, 
             null=True,
