@@ -19,9 +19,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
-
 <body class="drawer drawer--left" style="position: relative; min-height: 100%; top: 0px;">
   <section>
+    {% if item.purpose %}
     <div id="container">
       <div class="categoryContentArea">
         <h2>目的</h2>
@@ -31,7 +31,9 @@
           </ol>
         </div>
       </div>
+      {% endif %}
 
+      {% if item.success %}
       <div class="categoryContentArea">
         <h2>達成基準</h2>
         <div class="categoryContent">
@@ -40,11 +42,11 @@
           </ol>
         </div>
       </div>
-
+      {% endif %}
 
       {% for d in method_list %}
       <div class="detailFlowArea">
-        <div class="detailFlowAreaNum">0{{ d.id }}</div>
+        <div class="detailFlowAreaNum">{{ forloop.counter }}</div>
         <div class="detailFlowAreaContent">
           <h2>{{ d.method_name }}</h2>
           {% for procedure in d.procedure.all %}
@@ -52,8 +54,9 @@
             <li>
               <div class="detailFlowAreaContentText" id="">
                 <p>{{ procedure.procedure_name }}</p>
+                {% if procedure.point or procedure.caution %}
                 <div class="notes">
-                  {% if procedure.point %}
+                  {% if procedure.point  %}
                   <div class="notes-inner point">
                     <p>{{ procedure.point }}</p>
                   </div>
@@ -64,6 +67,7 @@
                   </div>
                   {% endif %}
                 </div>
+                {% endif %}
               </div>
 
               <div class="detailFlowAreaContentImg">
@@ -78,7 +82,6 @@
                 <video controls preload="auto" class='list'>
                   <source src="{{ MEDIA_URL }}{{ procedure.video }}" type='video/mp4'>
                 </video>
-
                 {% endif %}
               </div>
 
@@ -88,3 +91,4 @@
         </div>
       </div>
       {% endfor %}
+
