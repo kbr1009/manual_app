@@ -17,6 +17,28 @@
 <link rel="stylesheet" href="{% static 'css/4/print.css' %}" media="print">
 <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+<div id="google_translate_element">
+  <div class="skiptranslate goog-te-gadget" dir="ltr" style="">
+    <div id=":0.targetLanguage" style="white-space: nowrap;" class="goog-te-gadget-simple">
+      <img src="https://www.google.com/images/cleardot.gif" class="goog-te-gadget-icon" alt="" style="background-image: url(&quot;https://translate.googleapis.com/translate_static/img/te_ctrl3.gif&quot;); background-position: -65px 0px;">
+      <span style="vertical-align: middle;">
+        <a aria-haspopup="true" class="goog-te-menu-value" href="javascript:void(0)">
+          <span>言語を選択</span>
+          <img src="https://www.google.com/images/cleardot.gif" alt="" width="1" height="1">
+          <span style="border-left: 1px solid rgb(187, 187, 187);">​</span>
+          <img src="https://www.google.com/images/cleardot.gif" alt="" width="1" height="1">
+          <span style="color: rgb(118, 118, 118);" aria-hidden="true">▼</span>
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', includedLanguages: 'en,ne,vi,zh-CN,zh-TW,th', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true}, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
 <body class="drawer drawer--left" style="position: relative; min-height: 100%; top: 0px;">
@@ -91,4 +113,3 @@
         </div>
       </div>
       {% endfor %}
-
