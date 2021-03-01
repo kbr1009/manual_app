@@ -93,7 +93,7 @@ class Item(SortableMixin):
         ordering = ["the_order"]
 
     def __str__(self):
-        return self.item_name
+        return f"List {self.item_name}"
 
 
 """
