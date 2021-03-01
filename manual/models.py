@@ -74,13 +74,6 @@ class Item(SortableMixin):
             blank=True, 
             null=True
             )
-    item_section = models.ForeignKey(
-            Section, 
-            verbose_name='属するセクション', 
-            on_delete=models.CASCADE, 
-            blank=False, 
-            null=True
-            )
     job = models.ForeignKey(
             Job, 
             verbose_name='属する作業名', 
@@ -108,20 +101,6 @@ class Method(SortableMixin):
     method_name = models.CharField(
             verbose_name='4.作業方法',
             max_length=50, blank=False, 
-            null=True
-            )
-    method_section = models.ForeignKey(
-            Section, 
-            verbose_name='属するセクション', 
-            on_delete=models.CASCADE, 
-            blank=False, 
-            null=True
-            )
-    method_job = models.ForeignKey(
-            Job, 
-            verbose_name='属する作業名', 
-            on_delete=models.CASCADE, 
-            blank=False, 
             null=True
             )
     item = models.ForeignKey(
@@ -183,27 +162,6 @@ class Procedure(SortableMixin):
             verbose_name='動画', 
             upload_to='video/', 
             blank=True, 
-            null=True
-            )
-    procedure_section = models.ForeignKey(
-            Section, 
-            verbose_name='属するセクション', 
-            on_delete=models.CASCADE, 
-            blank=False, 
-            null=True
-            )
-    procedure_job = models.ForeignKey(
-            Job, 
-            verbose_name='属する作業名', 
-            on_delete=models.CASCADE, 
-            blank=False, 
-            null=True
-            )
-    procedure_item = models.ForeignKey(
-            Item, 
-            verbose_name='属する作業項目',
-            on_delete=models.CASCADE, 
-            blank=False, 
             null=True
             )
     method = models.ForeignKey(
