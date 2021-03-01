@@ -96,6 +96,11 @@ class Item(SortableMixin):
         return self.item_name
 
 
+"""
+    def __unicode__(self):
+        return "Section{0} - Job{1}".format(obj.pk, obj.job.pk)
+"""
+
 #作業方法
 class Method(SortableMixin):
     method_name = models.CharField(
