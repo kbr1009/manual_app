@@ -16,6 +16,9 @@ https://djangobrothers.com/blogs/django_null_blank/
 Djangoでリレーション先はどう表示するの？ 【ListView編】
 https://qiita.com/ragnar1904/items/1afaeb6601cc490fb70a
 
+ForeignKeyモデルのフィールドをAdmin画面のlist_displayに追加する
+https://djangobrothers.com/blogs/foreignkey_admin_list_display/
+
 空欄画像を表示させたくない
 https://teratail.com/questions/303482
 https://qiita.com/YaCpotato/items/d4c1d3e99415c795a7f5
