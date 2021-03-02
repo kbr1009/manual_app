@@ -94,7 +94,7 @@ class Item(SortableMixin):
 
 
     def __str__(self):
-        return f"{self.job}:{self.item_name}"
+        return f"({self.job}):{self.item_name}"
 
 
 #作業方法
