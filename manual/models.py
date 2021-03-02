@@ -92,14 +92,10 @@ class Item(SortableMixin):
         verbose_name_plural = '3.作業項目' 
         ordering = ["the_order"]
 
+
     def __str__(self):
-        return f"List {self.item_name}"
+        return f"{self.job}:{self.item_name}"
 
-
-"""
-    def __unicode__(self):
-        return "Section{0} - Job{1}".format(obj.pk, obj.job.pk)
-"""
 
 #作業方法
 class Method(SortableMixin):
