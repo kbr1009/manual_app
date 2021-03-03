@@ -3,7 +3,6 @@ from adminsortable.models import SortableMixin
 from adminsortable.fields import SortableForeignKey
 
 
-
 class Section(SortableMixin):
     section_name = models.CharField(
             verbose_name='1.セクション', 
@@ -35,6 +34,7 @@ class Job(SortableMixin):
             )
     section = models.ForeignKey(
             Section, 
+            verbose_name='属する項目', 
             on_delete=models.CASCADE, 
             blank=False, 
             null=True
@@ -51,7 +51,7 @@ class Job(SortableMixin):
         ordering = ["the_order"]
 
     def __str__(self):
-        return self.job_name
+        return f"{self.section} >> {self.job_name}"
 
 
 #作業項目
@@ -76,7 +76,7 @@ class Item(SortableMixin):
             )
     job = models.ForeignKey(
             Job, 
-            verbose_name='属する作業名', 
+            verbose_name='属する項目', 
             on_delete=models.CASCADE, 
             blank=False, 
             null=True
@@ -94,7 +94,7 @@ class Item(SortableMixin):
 
 
     def __str__(self):
-        return f"({self.job}):{self.item_name}"
+        return f"{self.job} >> {self.item_name}"
 
 
 #作業方法
@@ -106,7 +106,7 @@ class Method(SortableMixin):
             )
     item = models.ForeignKey(
             Item, 
-            verbose_name='属する作業項目',
+            verbose_name='属する項目',
             on_delete=models.CASCADE, 
             blank=False, 
             null=True
@@ -122,9 +122,8 @@ class Method(SortableMixin):
         verbose_name_plural = '4.作業方法'
         ordering = ["the_order"]
 
-
     def __str__(self):
-        return self.method_name
+        return f"{self.item} >> {self.method_name}"
 
 
 #作業手順
@@ -167,7 +166,7 @@ class Procedure(SortableMixin):
             )
     method = models.ForeignKey(
             Method, 
-            verbose_name='属する作業方法',
+            verbose_name='属する項目',
             on_delete=models.CASCADE, 
             blank=False, 
             null=True,
@@ -185,5 +184,4 @@ class Procedure(SortableMixin):
         ordering = ["the_order"]
 
     def __str__(self):
-        return self.procedure_name
-
+        return self.method_name
