@@ -75,22 +75,22 @@
           <ul>
             <li>
               <div class="detailFlowAreaContentText" id="">
-                <p>{{ procedure.procedure_name }}</p>
+                <p>{{ procedure.procedure_name | linebreaksbr }}</p>
                 {% if procedure.point or procedure.caution or procedure.tips %}
                 <div class="notes">
-                  {% if procedure.point  %}
+                  {% if procedure.point %}
                   <div class="notes-inner point">
-                    <p>{{ procedure.point }}</p>
+                    <p>{{ procedure.point | linebreaksbr }}</p>
                   </div>
                   {% endif %}
                   {% if procedure.caution %}
                   <div class="notes-inner attention">
-                    <p>{{ procedure.caution }}</p>
+                    <p>{{ procedure.caution | linebreaksbr }}</p>
                   </div>
                   {% endif %}
                   {% if procedure.tips %}
                   <div class="notes-inner tips">
-                    <p>{{ procedure.tips }}</p>
+                    <p>{{ procedure.tips | linebreaksbr }}</p>
                   </div>
                   {% endif %}
                 </div>
