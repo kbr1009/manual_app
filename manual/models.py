@@ -184,4 +184,4 @@ class Procedure(SortableMixin):
         ordering = ["the_order"]
 
     def __str__(self):
-        return self.method_name
+        return self.procedure_name
