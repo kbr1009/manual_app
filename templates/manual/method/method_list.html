@@ -57,18 +57,27 @@
             <li>
               <div class="detailFlowAreaContentText" id="">
                 <p>{{ procedure.procedure_name }}</p>
-                {% if procedure.point or procedure.caution %}
+                {% if procedure.point or procedure.caution or procedure.tips %}
                 <div class="notes">
+
                   {% if procedure.point  %}
                   <div class="notes-inner point">
                     <p>{{ procedure.point }}</p>
                   </div>
                   {% endif %}
+
                   {% if procedure.caution %}
                   <div class="notes-inner attention">
                     <p>{{ procedure.caution }}</p>
                   </div>
                   {% endif %}
+
+                  {% if procedure.tips %}
+                  <div class="notes-inner tips">
+                    <p>{{ procedure.tips }}</p>
+                  </div>
+                  {% endif %}
+
                 </div>
                 {% endif %}
               </div>
