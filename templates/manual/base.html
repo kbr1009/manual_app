@@ -1,75 +1,79 @@
 {% load static %}
 
-<!doctype html>
-<html lang="ja">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html lang="ja" style="background: #ffffff;border-color: var(--red);height: 489px;">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
-    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>yamawa manual</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calistoga">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Background-Image---Parallax---No-Text.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Bootstrap-4---Timeline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Features-Boxed.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Dark.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Navbar---Apple-1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navbar---Apple.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Simple-Slider.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Team-Boxed.css' %}">
+    <link rel="icon" href="{% static 'icon/favicon.ico' %}">
   </head>
 
-
-
-  <body>
-
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-
-        {% if request.user.is_authenticated %}
-        <a class="navbar-brand" href="{% url 'manual:top' %}"><img src="{% static 'img/logo.png' %}"></a>
-        {% else %}
-        {% url 'login' %}
-        {% endif %}
-
-        <button class="navbar-togglr" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-          </ul>
-          <ul class="navbar-nav">
-
-            <!-- ここから追記 -->
-            {% if request.user.is_authenticated %}
-            
-            <a class="nav-item">
-              <a class="nav-link">{{ user.get_username }}</a>
-            </a>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'admin:index' %}">管理画面</a>
-            </li>
-
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'accounts:login' %}">ログアウト</a>
-            </li>
-
-            {% else %}
-            {% endif %}
-            <!-- ここまで追記 -->
-
+  <body style="background: rgba(255,255,255,0.4);border-color: var(--white);margin: 15px;padding: 0px;height: 563px;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+      <div class="container"><a class="navbar-brand" href="{% url 'manual:top' %}" style="color: rgba(51,51,51,0);background: url(&quot;{% static 'img/logo.png' %}&quot;);background-size: contain;font-size: 25px;">Companya&nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="border-color: rgba(136,136,136,0);"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link active" href="" style="font-size: 15px;font-family: Abel, sans-serif;">user : {{ user.get_username }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}" style="font-size: 15px;font-family: Abel, sans-serif;">admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}" style="font-size: 15px;font-family: Abel, sans-serif;">logout</a></li>
           </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
-    <main>
-      {% block content %}
-      {% endblock %}
-    </main>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {% block content %}
+    {% endblock %}
+
+    <footer style="height: 102px;">
+      <footer class="flex-wrap footer-dark" style="background: #f4ed7c;color: var(--gray-dark);padding: 23px 0px;margin: 0px;height: 135px;">
+        <div class="container">
+          <div class="row">
+            <div class="col item social"><a href="{% url 'manual:top' %}" style="color: var(--gray);background: rgba(255,255,255,0);"><i class="icon ion-android-home" style="color: var(--gray-dark);font-size: 35px;"></i></a><a href="https://github.com/kbr1009" style="background: rgba(255,255,255,0.4);"><i class="icon ion-social-github" style="color: var(--gray-dark);font-size: 35px;"></i></a></div>
+          </div>
+          <p class="copyright" style="border-color: var(--gray-dark);color: #121314;filter: brightness(95%) contrast(101%) saturate(110%);padding: -55px 0px 0px;">©2021 yamawafoods,inc.</p>
+        </div>
+      </footer>
+    </footer>
+<style>
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+</style>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="{% static 'assets/js/Navbar---Apple.js' %}"></script>
+    <script src="{% static 'assets/js/Simple-Slider.js' %}"></script>
   </body>
+
 </html>

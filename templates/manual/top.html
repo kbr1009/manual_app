@@ -1,36 +1,11 @@
 {% extends "manual/base.html" %}
 {% block content %}
-<div class="container">
-  <h1>Home</h1>
-  <div class="card-columns">
-    <a href="{% url 'manual:section_list' %}" class="card"> <!-- aタグに変更 -->
-      <div class="card-body">
-        <h5 class="card-title">マニュアル一覧 ▶︎</h5>
-      </div>
-    </a> <!-- aタグに変更 -->
+
+<div class="container" style="background: rgba(255,255,255,0);">
+  <div class="row">
+    <div class="col-md-3" style="height: 140px;"><a href="{% url 'manual:section_list' %}" style="color: rgba(0,123,255,0);">Link<div style="height: 120px;background: rgba(196,204,204,0);margin: -10px;border-radius: 5px;border: 2px solid var(--pink) ;">
+          <h1 style="text-align: center;font-size: 25px;padding: 43px;color: var(--pink);background: rgb(255,255,255);height: 110px;"><i class="fa fa-hand-o-right"></i>マニュアル一覧</h1>
+        </div></a></div>
   </div>
 </div>
-<style>
-body {
-  padding-top: 70px;
-}
-
-.home {
-  display: table-cell !important;
-}
-
-.list {
-  width: 240px;
-  height: 100%;
-}
-
-.card-title {
-  text-align: center;
-}
-
-
-.h5, h5 {
-  font-size: 1.50rem;
-}
-</style>
 {% endblock %}

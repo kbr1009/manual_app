@@ -109,7 +109,8 @@ class Method(SortableMixin):
             verbose_name='属する項目',
             on_delete=models.CASCADE, 
             blank=False, 
-            null=True
+            null=True,
+            related_name='method'
             )
     the_order = models.PositiveIntegerField(
             default=0, 

@@ -1,33 +1,30 @@
 {% extends "manual/base.html" %}
 {% block content %}
-<div class="container">
-  <h1>{{ job }}の作業手順</h1>
-  <div class="card-columns">
-    {% for c in item_list %}
-    <a href="{% url 'manual:method_list' c.pk  %}" class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ c.id }}.{{ c.item_name }}</h5>
-      </div>
-    </a>
-    {% endfor %}
+
+<div class="container" style="padding: 15px;">
+  <div class="row">
+    <div class="col-md-12" style="background: rgba(255,255,255,0);">
+      <h1 style="text-align: center;font-size: 25px;color: #000000;margin: 0px;border-color: var(--pink);">{{ job }}</h1>
+    </div>
   </div>
 </div>
-<style>
-body {
-  padding-top: 70px;
-}
-.home {
-  display: table-cell !important;
-}
-.list {
-  width: 240px;
-  height: 100%;
-}
-.card-title {
-  text-align: center;
-}
-.h5, h5 {
-  font-size: 1.45rem;
-}
-</style>
+{% for c in item_list %}
+<div class="container">
+  <div class="row" style="border: 1px none var(--pink) ;">
+    <div class="col-md-12" style="background: rgba(255,255,255,0);border-radius: 5px;border: 2px solid rgba(255,255,255,0);">
+      <section style="height: 50px;padding: 16px;border-style: none;">
+        <h1 style="font-size: 23px;height: 25px;color: var(--pink);padding: 0px;">{{ forloop.counter }}. {{ c.item_name }}</h1>
+      </section>
+
+      {% for method in c.method.all %}
+      <section style="height: 31px;padding: 13px;width: 300px;">
+        <h1 style="font-size: 15px;padding: 0px;height: 18px;color: var(--gray);border-color: var(--pink);">{{ forloop.counter }}. {{ method.method_name }}</h1>
+      </section>
+      {% endfor %}
+
+      <section style="height: 51px;padding: 10px;"><button class="btn btn-primary" type="button" style="height: 34px;padding: 2px 12px;margin: 0px;background: #f4ed7c;color: var(--pink);border-color: rgba(255,255,255,0);"><a href="{% url 'manual:method_list' c.pk %}" style="color: var(--pink);">詳細の確認</a></button></section>
+    </div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}
