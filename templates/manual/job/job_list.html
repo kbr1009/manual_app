@@ -1,0 +1,20 @@
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" style="background: rgba(255,255,255,0);">
+      <h1 style="text-align: center;font-size: 25px;color: #000000;margin: 0px;border-color: var(--pink);">{{ section }}</h1>
+    </div>
+  </div>
+</div>
+<div class="container" style="background: rgba(255,255,255,0);">
+  <div class="row">
+    {% for b in job_list %}
+    <div class="col-md-3" style="height: 140px;"><a href="{% url 'manual:item_list' b.pk %}" style="color: rgba(0,123,255,0);">Link<div style="height: 120px;background: #ffffff;margin: -10px;border: 2px solid var(--pink);border-radius: 5px;">
+          <h1 style="text-align: center;padding: 43px;font-size: 25px;color: var(--pink);background: rgba(196,204,204,0);height: 110px;"><i class="fa fa-hand-o-right"></i>{{ b.job_name }}</h1>
+        </div></a></div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

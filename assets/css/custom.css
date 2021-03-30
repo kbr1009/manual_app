@@ -1,0 +1,25 @@
+body {
+  padding-top: 70px;
+}
+
+.home {
+  display: table-cell !important;
+}
+
+.list {
+  width: 240px;
+  height: 100%;
+}
+
+.card-title {
+  text-align: center;
+}
+
+
+.h5, h5 {
+	font-size: 1.80rem;
+}
+
+.card-body {
+	padding: 2rem;
+}
