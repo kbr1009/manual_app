@@ -1,0 +1,49 @@
+detailviewで外部キーからオブジェクトを取得する▶︎contextをモデルに与える。
+参考にして解決したサイト→　https://stackoverflow.com/questions/44053636/django-detailview-get-objects-from-foreignkey
+
+<技術参考>
+フォームで改行をした時htmlに改行させる
+https://www.tssol.net/blog/2019/10/20/django-input-textarea-line-breaks-on-html/
+
+ Django の CRUD ジェネリックビュー (ListView, DetailView, CreateView, UpdateView, DeleteView) の簡単な使い方
+https://tech.torico-corp.com/blog/django-crud-generic-view/
+
+ やさしい図解で学ぶ　ER図　表記法一覧
+https://qiita.com/ramuneru/items/32fbf3032b625f71b69d
+
+ Djangoモデルフィールドのnullとblankの違いを理解する
+https://djangobrothers.com/blogs/django_null_blank/
+Djangoでリレーション先はどう表示するの？ 【ListView編】
+https://qiita.com/ragnar1904/items/1afaeb6601cc490fb70a
+
+ForeignKeyモデルのフィールドをAdmin画面のlist_displayに追加する
+https://djangobrothers.com/blogs/foreignkey_admin_list_display/
+
+空欄画像を表示させたくない
+https://teratail.com/questions/303482
+https://qiita.com/YaCpotato/items/d4c1d3e99415c795a7f5
+
+
+
+<s3>
+・Django + Heroku + AWS S3で画像表示させる方法
+https://qiita.com/frosty/items/e793da61f9525d7afbe6
+
+・Django + Heroku + WhiteNoise + AWS S3 によるWebアプリのデプロイ
+https://qiita.com/knakajima3027/items/f8d10e3066fbcde117d3
+
+・S3のアクセス制限がわからないので纏めてみた
+https://qiita.com/leomaro7/items/0e3c09216cf864744391
+
+
+<cloudinary>
+Django+cloudinaryで画像をアップロードする方法
+https://developer.yukimonkey.com/article/20200214/
+
+
+<ログインフォーム参考>
+https://bootsnipp.com/snippets/X04B0
+
+
+<htmlのfor文　トリッキー>
+https://opendata-web.site/blog/entry/17/
