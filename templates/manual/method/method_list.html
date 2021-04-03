@@ -96,6 +96,18 @@
                       </div>
                       {% endif %}
 
+
+                      {% if procedure.video %}
+                      <div class="row justify-content-center">
+                        <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;">
+                          <div class="card clean-card text-center"><video width="250" height="315" controls style="height: 191px;">
+                              <source src="{{ MEDIA_URL }}{{ procedure.video }}" type="video/mp4">
+                              </source>
+                            </video></div>
+                        </div>
+                      </div>
+                      {% endif %}
+
                     </div>
                   </div>
                   {% endfor %}
