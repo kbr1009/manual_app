@@ -28,7 +28,7 @@
 
       <section style="height: 51px;padding: 10px;">
         <button class="btn btn-primary" type="button" style="height: 34px;padding: 2px 12px;margin: 0px;background: #f4ed7c;color: var(--pink);border-color: rgba(255,255,255,0);">
-          <a href="#" style="color: var(--pink);">
+          <a href="{% url 'manual:method_list' c.pk %}" style="color: var(--pink);">
             <strong style="font-size: 15px;">
               {{ forloop.counter }} の詳細
             </strong>
