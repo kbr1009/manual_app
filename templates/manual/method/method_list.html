@@ -91,16 +91,18 @@
                       {% if procedure.img %}
                       <div class="row justify-content-center">
                         <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;">
-                          <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{ MEDIA_URL }}{{ procedure.img }}" /></div>
+                          <div class="card clean-card text-center">
+                            <img class="card-img-top w-100 d-block" src="{{ MEDIA_URL }}{{ procedure.img }}" style="border-style: none;" />
+                          </div>
                         </div>
                       </div>
                       {% endif %}
 
 
                       {% if procedure.video %}
-                      <div class="row justify-content-center">
-                        <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;">
-                          <div class="card clean-card text-center">
+                      <div class="row justify-content-center" style="border-style: none;">
+                        <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;border-style: none;">
+                          <div class="card clean-card text-center" style="border-style: none;">
                             <video width="250" height="315" controls style="height: 191px;">
                               <source src="{{ MEDIA_URL }}{{ procedure.video }}" type="video/mp4"></source>
                             </video>
