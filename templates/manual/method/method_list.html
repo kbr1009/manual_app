@@ -47,7 +47,7 @@
                       <h1 style="font-size: 20px;color: var(--pink);"><strong style="font-size: 34px;">{{ forloop.counter }}.&nbsp;</strong>{{ d.method_name }}</h1>
                     </div>
                   </div>
-                  
+
                   {% for procedure in d.procedure.all %}
                   <div class="row">
                     <div class="col" style="border-radius: 5px;border: 1px solid rgba(33,37,41,0.17);">
@@ -85,7 +85,17 @@
                           {% endif %}
 
                         </div>
-                      </div> {% endif %}
+                      </div> 
+                      {% endif %}
+
+                      {% if procedure.img %}
+                      <div class="row justify-content-center">
+                        <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;">
+                          <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="{{ MEDIA_URL }}{{ procedure.img }}" /></div>
+                        </div>
+                      </div>
+                      {% endif %}
+
                     </div>
                   </div>
                   {% endfor %}
