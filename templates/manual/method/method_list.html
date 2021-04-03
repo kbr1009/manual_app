@@ -44,18 +44,18 @@
                 <div class="col">
                   <div class="row">
                     <div class="col">
-                      <h1 style="font-size: 20px;color: var(--pink);"><strong style="font-size: 34px;">{{ forloop.counter }}&nbsp;</strong>{{ d.method_name }}</h1>
+                      <h1 style="font-size: 20px;color: var(--pink);"><strong style="font-size: 34px;">{{ forloop.counter }}.&nbsp;</strong>{{ d.method_name }}</h1>
                     </div>
                   </div>
                   
                   {% for procedure in d.procedure.all %}
                   <div class="row">
-                    <div class="col">
+                    <div class="col" style="border-radius: 5px;border: 1px solid rgba(33,37,41,0.17);">
                       <div class="row" style="margin: 5px;">
                         <div class="col">
                           <small style="font-size: 15.8px;border-style: none;border-color: var(--gray);color: var(--dark);">
                             <strong class="border-primary" style="color: var(--gray-dark);border-radius: 32px;border: 1px none var(--pink);">
-                              &nbsp;{{ forloop.counter }}&nbsp;&nbsp;
+                              &nbsp;{{ forloop.counter }}.&nbsp;&nbsp;
                             </strong>
                             {{ procedure.procedure_name }}
                           </small>
@@ -68,46 +68,24 @@
 
                           {% if procedure.point  %}
                           <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--blue);border-style: none;height: 30px;width: 87px;">ポイント</a>
-                            <p style="border-style: none;color: var(--blue);font-size: 16px;margin: 9px;">{{ procedure.point }}</p>
+                            <p style="border-style: none;color: var(--blue);font-size: 16px;margin: 9px;">・{{ procedure.point }}</p>
                           </div>
                           {% endif %}
 
                           {% if procedure.caution %}
                           <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--red);border-style: none;height: 30px;width: 87px;">注意点</a>
-                            <p style="border-style: none;color: var(--red);font-size: 16px;margin: 9px;">{{ procedure.caution }}</p>
+                            <p style="border-style: none;color: var(--red);font-size: 16px;margin: 9px;">・{{ procedure.caution }}</p>
                           </div>
                           {% endif %}
 
                           {% if procedure.tips %}
                           <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--success);border-style: none;height: 30px;width: 87px;">コツ</a>
-                            <p style="border-style: none;color: var(--success);font-size: 16px;margin: 9px;">{{ procedure.tips }}</p>
+                            <p style="border-style: none;color: var(--success);font-size: 16px;margin: 9px;">・{{ procedure.tips }}</p>
                           </div>
                           {% endif %}
 
                         </div>
-                      </div>
-                      {% endif %}
-
-                      {% if procedure.img %}
-                      <div class="row" style="margin: 10px;height: 100px;">
-                        <div class="col">
-                          <img src="{{ MEDIA_URL }}{{ procedure.img }}" class="list" data-toggle="modal" data-target="#image_myModal353" alt=""/>
-                        </div>
-                      </div>
-                      {% endif %}
-
-                      {% if procedure.video %}
-                      <div class="row">
-                        <div class="col">
-                          <iframe allowfullscreen="" frameborder="0" width="560" height="315">
-                            <video controls preload="auto" class='list'>
-                              <source src="{{ MEDIA_URL }}{{ procedure.video }}" type='video/mp4'>
-                            </video>
-                          </iframe>
-                        </div>
-                      </div>
-                      {% endif %}
-
+                      </div> {% endif %}
                     </div>
                   </div>
                   {% endfor %}
