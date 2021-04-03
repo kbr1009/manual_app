@@ -4,21 +4,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12" style="background: rgba(255,255,255,0);">
-      <h1 style="text-align: center;font-size: 25px;color: #000000;margin: 0px;border-color: var(--pink);">{{ section }}</h1>
+      <h1 style="text-align: center;font-size: 25px;color: #000000;margin: 0px;border-color: var(--pink);">セクション一覧</h1>
     </div>
   </div>
 </div>
 <div class="container" style="background: rgba(255,255,255,0);">
   <div class="row">
-    {% for b in job_list %}
+    {% for a in section_list %}
     <div class="col-md-3" style="height: 140px;">
-      <a href="{% url 'manual:item_list' b.pk %}" style="color: rgba(0,123,255,0);">
+      <a href="{% url 'manual:job_list' a.pk %}" style="color: rgba(0,123,255,0);">
         Link
         <div style="height: 120px;background: rgba(196,204,204,0);margin: -10px;border-radius: 3px;border: 1px solid var(--pink);">
           <h1 style="text-align: center;padding: 43px;font-size: 25px;color: var(--pink);background: rgba(196,204,204,0);height: 110px;">
             <i class="fa fa-hand-o-right">
             </i>
-            {{ b.job_name }}
+            {{ a.section_name }}
           </h1>
         </div>
       </a>
