@@ -51,7 +51,7 @@ class Job(SortableMixin):
         ordering = ["the_order"]
 
     def __str__(self):
-        return f"{self.section} -> {self.job_name}"
+        return f"{self.section} ＞＞ {self.job_name}"
 
 
 #作業項目
@@ -94,7 +94,7 @@ class Item(SortableMixin):
 
 
     def __str__(self):
-        return f"{self.job} -> {self.item_name}"
+        return f"{self.job} ＞＞ {self.item_name}"
 
 
 #作業方法
@@ -124,7 +124,7 @@ class Method(SortableMixin):
         ordering = ["the_order"]
 
     def __str__(self):
-        return f"{self.item} -> {self.method_name}"
+        return f"{self.item} ＞＞ {self.method_name}"
 
 
 #作業手順
