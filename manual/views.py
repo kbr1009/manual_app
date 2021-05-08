@@ -4,6 +4,7 @@ from .models import Section, Job, Item, Method, Procedure
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 
 
 class SectionListView(LoginRequiredMixin, ListView):
@@ -54,3 +55,7 @@ class MethodListView(LoginRequiredMixin, ListView):
         item = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
         queryset = super().get_queryset().filter(item=item)
         return queryset
+
+class UserListView(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'manual/users/user_list.html'
