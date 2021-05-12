@@ -7,14 +7,10 @@
     <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
     <li class="breadcrumb-item active"><span style="color: var(--secondary);">ユーザ一覧</span></li>
   </ol>
-</div>
-
-<div class="container" style="padding: 15px;">
-
   {% for i in user_list %}
   <div class="row user-list">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 user-item">
-      <div class="user-container" style="border-color: var(--pink);">
+      <div class="user-container" style="border-color: var(--pink);border-radius: 4px;">
         <a class="user-avatar" href="#">
           <img class="rounded-circle img-fluid" src="{% static 'img/usericon.gif' %}" width="48" height="48" alt="Profile of Mark Smith Peterson">
         </a>
@@ -30,8 +26,10 @@
     </div>
   </div>
   {% endfor %}
-
+  <div class="col">
+    <div>
+      <button class="btn btn-primary btn-sm" type="button" href="#" style="font-size: 14px;background: #f4ed7c;color: rgb(232, 62, 140);border-style: double;border-color: var(--yellow);">Add User</button>
+    </div>
+  </div>
 </div>
-
-
 {% endblock %}
