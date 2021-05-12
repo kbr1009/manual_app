@@ -1,5 +1,6 @@
 {% extends "manual/base.html" %}
 {% block content %}
+{% load static %}
 
 <div class="container" style="padding: 15px;">
   <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
@@ -15,13 +16,13 @@
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 user-item">
       <div class="user-container" style="border-color: var(--pink);">
         <a class="user-avatar" href="#">
-          <img class="rounded-circle img-fluid" src="assets/img/avatar.jpg" width="48" height="48" alt="Profile of Mark Smith Peterson">
+          <img class="rounded-circle img-fluid" src="{% static 'img/usericon.gif' %}" width="48" height="48" alt="Profile of Mark Smith Peterson">
         </a>
         <p class="user-name"><a href="#">{{ i.last_name }} {{ i.first_name }}</a>
         {% if i.last_login %}
-        <span>＜最終ログイン時間＞{{ i.last_login }}</span>
+        <span>＜最終ログイン＞{{ i.last_login }}</span>
         {% else %}
-        <span>＜最終ログイン時間＞まだログインしていません</span>
+        <span>＜最終ログイン＞まだログインしていません</span>
         {% endif %}
         </p>
         <a class="user-delete" href="#">×<i class="fa fa-remove"></i></a>
