@@ -62,11 +62,12 @@ class UserListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'manual/users/user_list.html'
 
+
 class UserCreateView(CreateView):
   model = User
   template_name = "manual/users/user_add.html"
   form_class = UserAddForm
-  success_url = reverse_lazy('manual:user_list') # urls.pyのnameを指定
-  # template_nameのデフォルトはtemplates/auth/user_form.html
+  success_url = reverse_lazy('manual:user_list')
+  
   def get_success_url(self):
       return reverse_lazy('manual:user_list') 
