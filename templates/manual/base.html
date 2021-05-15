@@ -40,7 +40,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link active" href="" style="font-size: 15px;font-family: Abel, sans-serif;">ユーザ : {{ user.last_name }}{{ user.first_name }}</a></li>
+            <li class="nav-item"><a class="nav-link active" href="" style="font-size: 15px;font-family: Abel, sans-serif;">ログインユーザ : {{ user.last_name }}{{ user.first_name }}</a></li>
             {% if user.is_superuser %}
             <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}" style="font-size: 15px;font-family: Abel, sans-serif;">管理者画面</a></li>
             {% endif %}
