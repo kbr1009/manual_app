@@ -10,4 +10,5 @@ urlpatterns = [
     path('top/<int:pk>/item', views.ItemListView.as_view(), name = 'item_list'),
     path('top/<int:pk>/method', views.MethodListView.as_view(), name = 'method_list'),
     path('top/users', views.UserListView.as_view(), name = 'user_list' ),
+    path('top/users/useradd', views.UserCreateView.as_view(), name = 'user_add'),
 ]

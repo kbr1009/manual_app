@@ -28,7 +28,7 @@
   {% endfor %}
   <div class="col">
     <div>
-      <button class="btn btn-primary btn-sm" type="button" href="#" style="font-size: 14px;background: #f4ed7c;color: rgb(232, 62, 140);border-style: double;border-color: var(--yellow);">Add User</button>
+      <button onclick="location.href='{% url 'manual:user_add' %}'" class="btn btn-primary btn-sm" type="button"  style="font-size: 14px;background: #f4ed7c;color: rgb(232, 62, 140);border-style: double;border-color: var(--yellow);">Add User</button>
     </div>
   </div>
 </div>

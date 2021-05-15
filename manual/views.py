@@ -1,10 +1,11 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, CreateView
 from .models import Section, Job, Item, Method, Procedure
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
-from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 
 class SectionListView(LoginRequiredMixin, ListView):
@@ -59,3 +60,12 @@ class MethodListView(LoginRequiredMixin, ListView):
 class UserListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'manual/users/user_list.html'
+
+class UserCreateView(CreateView):
+  model = User
+  template_name = "manual/users/user_add.html"
+  form_class = UserCreationForm
+  success_url = reverse_lazy('manual:user_list') # urls.pyのnameを指定
+  # template_nameのデフォルトはtemplates/auth/user_form.html
+  def get_success_url(self):
+      return reverse_lazy('manual:user_list') 
