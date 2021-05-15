@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from .forms import UserAddForm
 
 
 class SectionListView(LoginRequiredMixin, ListView):
@@ -64,7 +65,7 @@ class UserListView(LoginRequiredMixin, ListView):
 class UserCreateView(CreateView):
   model = User
   template_name = "manual/users/user_add.html"
-  form_class = UserCreationForm
+  form_class = UserAddForm
   success_url = reverse_lazy('manual:user_list') # urls.pyのnameを指定
   # template_nameのデフォルトはtemplates/auth/user_form.html
   def get_success_url(self):
