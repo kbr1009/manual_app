@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView
+from django.views.generic import DetailView, DeleteView
 from .models import Section, Job, Item, Method, Procedure
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
@@ -63,11 +64,22 @@ class UserListView(LoginRequiredMixin, ListView):
     template_name = 'manual/users/user_list.html'
 
 
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'manual/users/user_detail.html'
+
+
+class UserDeleteView(LoginRequiredMixin, DeleteView):
+    model = User
+    template_name = 'manual/users/user_delete.html'
+    success_url = reverse_lazy('manual:user_list')
+
+
 class UserCreateView(CreateView):
-  model = User
-  template_name = "manual/users/user_add.html"
-  form_class = UserAddForm
-  success_url = reverse_lazy('manual:user_list')
-  
-  def get_success_url(self):
-      return reverse_lazy('manual:user_list') 
+    model = User
+    template_name = "manual/users/user_add.html"
+    form_class = UserAddForm
+    success_url = reverse_lazy('manual:user_list')
+
+    def get_success_url(self):
+        return reverse_lazy('manual:user_list') 
