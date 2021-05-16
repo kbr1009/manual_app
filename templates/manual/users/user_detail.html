@@ -1,0 +1,21 @@
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container">
+  <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
+    <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
+    <li class="breadcrumb-item"><a href="{{ request.META.HTTP_REFERER }}"><span style="color: var(--pink);">ユーザ一覧</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">ユーザー詳細画面</span></li>
+  </ol>
+  <dl class="row">
+    <dt class="col-sm-3">ユーザー名</dt>
+    <dd class="col-sm-9">{{ user.username }}</dd>
+    <dt class="col-sm-3">名前</dt>
+    <dd class="col-sm-9">{{ user.last_name }}{{ user.first_name }}</dd>
+    <dt class="col-sm-3">メールアドレス</dt>
+    <dd class="col-sm-9">{{ user.email }}</dd>
+  </dl>
+  <a class="btn btn-primary" href="#" role="button">編集</a>
+  <a class="btn btn-danger" href="{% url 'manual:user_delete' user.pk %}" role="button">削除</a>
+</div>
+{% endblock %}
