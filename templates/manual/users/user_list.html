@@ -14,7 +14,7 @@
         <a class="user-avatar" href="#">
           <img class="rounded-circle img-fluid" src="{% static 'img/usericon.gif' %}" width="48" height="48" alt="Profile of Mark Smith Peterson">
         </a>
-        <p class="user-name"><a href="#">{{ i.last_name }} {{ i.first_name }}</a>
+        <p class="user-name"><a href="{% url 'manual:user_detail' i.pk %}">{{ i.last_name }} {{ i.first_name }}</a>
         {% if i.last_login %}
         <span>＜最終ログイン＞{{ i.last_login }}</span>
         {% else %}
