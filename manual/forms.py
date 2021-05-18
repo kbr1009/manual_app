@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Section, Job
 
 
 class UserAddForm(UserCreationForm):
@@ -18,3 +19,13 @@ class UserAddForm(UserCreationForm):
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
             field.widget.attrs['placeholder'] = field.label
+
+class CreateSectionForm(forms.ModelForm):
+    class Meta:
+        model = Section
+        fields = ("section_name",)
+
+class CreateJobForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ("job_name","section")

@@ -47,6 +47,9 @@
             {% if user.is_superuser %}
             <li class="nav-item"><a class="nav-link" href="{% url 'manual:user_list' %}" style="font-size: 15px;font-family: Abel, sans-serif;">ユーザ管理</a></li>
             {% endif %}
+            {% if user.is_superuser %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'manual:create_section_list' %}" style="font-size: 15px;font-family: Abel, sans-serif;">マニュアルの編集画面</a></li>
+            {% endif %}
             <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}" style="font-size: 15px;color:red;font-family: Abel, sans-serif;">ログアウト</a></li>
           </ul>
         </div>

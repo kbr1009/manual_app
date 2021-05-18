@@ -7,8 +7,8 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from .forms import UserAddForm
-
+from .forms import UserAddForm, CreateSectionForm
+from .forms import CreateJobForm
 
 class SectionListView(LoginRequiredMixin, ListView):
     model = Section 
@@ -79,7 +79,48 @@ class UserCreateView(CreateView):
     model = User
     template_name = "manual/users/user_add.html"
     form_class = UserAddForm
-    success_url = reverse_lazy('manual:user_list')
+    success_url = reverse_lazy("manual:user_list")
 
     def get_success_url(self):
-        return reverse_lazy('manual:user_list') 
+        return reverse_lazy("manual:user_list") 
+
+
+class CreateSectionListView(LoginRequiredMixin, ListView):
+    model = Section 
+    template_name = 'manual/create/list.html'
+
+
+class CreateSectionView(CreateView):
+    model = Section
+    template_name = "manual/create/create.html"
+    form_class = CreateSectionForm
+    success_url = reverse_lazy("manual:create_section_list")
+    
+    def get_success_url(self):
+        return reverse_lazy("manual:create_section_list") 
+
+
+class CreateJobListView(LoginRequiredMixin, ListView):
+    model = Job
+    template_name = 'manual/create/job/list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['section'] = self.section
+        return context
+
+    def get_queryset(self):
+        section = self.section = get_object_or_404(Section, pk=self.kwargs['pk'])
+        queryset = super().get_queryset().filter(section=section)
+        return queryset
+
+
+class CreateJobView(CreateView):
+    model = Section
+    template_name = "manual/create/job/create.html"
+    form_class = CreateJobForm
+    success_url = reverse_lazy("manual:top")
+    
+    def get_success_url(self):
+        return reverse_lazy("manual:top") 
+
