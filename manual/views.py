@@ -116,13 +116,36 @@ class CreateJobListView(LoginRequiredMixin, ListView):
 
 
 class CreateJobView(CreateView):
-    model = Section
+    model = Job
     template_name = "manual/create/job/create.html"
     form_class = CreateJobForm
 
+    def get_context_data(self, **kwargs):
+        return CreateView.get_context_data(self, **kwargs)
+    
+    def form_valid(self, form):
+        return CreateView.form_valid(self, form);
+    
+    def get_success_url(self):
+        return reverse_lazy('manual:top')
+
+"""
+#https://teratail.com/questions/293693　を参照
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        section = Section.objects.get(id = self.kwargs['section_name'])
+        form.instance.section_id= section.id
+        form.save()
+
+
+    def get_success_url(self):
+        return reverse_lazy("manual:top") 
+"""
+"""
     def form_valid(self, form):
         form.instance.section_id = self.request.user.id
         return super(CreateJobView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy("manual:top") 
+"""
