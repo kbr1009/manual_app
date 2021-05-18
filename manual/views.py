@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render,resolve_url, get_object_or_404
 from django.views.generic import ListView, CreateView
 from django.views.generic import DetailView, DeleteView
 from .models import Section, Job, Item, Method, Procedure
@@ -119,8 +119,10 @@ class CreateJobView(CreateView):
     model = Section
     template_name = "manual/create/job/create.html"
     form_class = CreateJobForm
-    success_url = reverse_lazy("manual:top")
-    
+
+    def form_valid(self, form):
+        form.instance.section_id = self.request.user.id
+        return super(CreateJobView, self).form_valid(form)
+
     def get_success_url(self):
         return reverse_lazy("manual:top") 
-
