@@ -128,24 +128,3 @@ class CreateJobView(CreateView):
     
     def get_success_url(self):
         return reverse_lazy('manual:create_section_list')
-
-"""
-#https://teratail.com/questions/293693　を参照
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        section = Section.objects.get(id = self.kwargs['section_name'])
-        form.instance.section_id= section.id
-        form.save()
-
-
-    def get_success_url(self):
-        return reverse_lazy("manual:top") 
-"""
-"""
-    def form_valid(self, form):
-        form.instance.section_id = self.request.user.id
-        return super(CreateJobView, self).form_valid(form)
-
-    def get_success_url(self):
-        return reverse_lazy("manual:top") 
-"""
