@@ -127,7 +127,7 @@ class CreateJobView(CreateView):
         return CreateView.form_valid(self, form);
     
     def get_success_url(self):
-        return reverse_lazy('manual:top')
+        return reverse_lazy('manual:create_section_list')
 
 """
 #https://teratail.com/questions/293693　を参照

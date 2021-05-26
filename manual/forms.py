@@ -28,4 +28,4 @@ class CreateSectionForm(forms.ModelForm):
 class CreateJobForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ("job_name",)
+        fields = "__all__"
