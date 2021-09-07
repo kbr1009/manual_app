@@ -47,3 +47,6 @@ https://bootsnipp.com/snippets/X04B0
 
 <htmlのfor文　トリッキー>
 https://opendata-web.site/blog/entry/17/
+
+<Viewから複数idを取得する方法>
+https://teratail.com/questions/218463
