@@ -19,45 +19,46 @@ class JobListView(LoginRequiredMixin, ListView):
     model = Job
     template_name = 'manual/job/job_list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['section'] = self.section
-        return context
-
     def get_queryset(self):
-        section = self.section = get_object_or_404(Section, pk=self.kwargs['pk'])
+        section = self.section = get_object_or_404(Section, pk=self.kwargs['section_id'])
         queryset = super().get_queryset().filter(section=section)
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['section_id'] = self.section
+        return context
 
 
 class ItemListView(LoginRequiredMixin, ListView):
     model = Item
     template_name = 'manual/item/item_list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['job'] = self.job
-        return context
-
     def get_queryset(self):
-        job = self.job = get_object_or_404(Job, pk=self.kwargs['pk'])
+        job = self.job = get_object_or_404(Job, pk=self.kwargs['job_id'])
         queryset = super().get_queryset().filter(job=job)
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['job_id'] = self.job
+        return context
 
 
 class MethodListView(LoginRequiredMixin, ListView):
     model = Method
     template_name = 'manual/method/method_list.html'
 
+    def get_queryset(self):
+        item = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
+        queryset = super().get_queryset().filter(item=item)
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['item'] = self.item
         return context
 
-    def get_queryset(self):
-        item = self.item = get_object_or_404(Item, pk=self.kwargs['pk'])
-        queryset = super().get_queryset().filter(item=item)
-        return queryset
 
 class UserListView(LoginRequiredMixin, ListView):
     model = User

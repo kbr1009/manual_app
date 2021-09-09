@@ -4,12 +4,12 @@
 <div class="container" style="background: rgba(255,255,255,0);">
   <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
     <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
-    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ section }}</span></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ section_id }}</span></li>
   </ol>
   <div class="row">
     {% for b in job_list %}
     <div class="col-md-3" style="height: 140px;">
-      <a href="{% url 'manual:item_list' b.pk %}" style="color: rgba(0,123,255,0);">
+      <a href="{% url 'manual:item_list' b.section_id b.pk %}" style="color: rgba(0,123,255,0);">
         Link
         <div style="height: 120px;background: rgba(196,204,204,0);margin: -10px;border-radius: 3px;border: 1px solid var(--pink);">
           <h1 style="text-align: center;padding: 43px;font-size: 25px;color: var(--pink);background: rgba(196,204,204,0);height: 110px;">
