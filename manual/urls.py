@@ -16,8 +16,9 @@ urlpatterns = [
     path('top/users/<int:pk>/delete', views.UserDeleteView.as_view(), name = 'user_delete'),
     path('top/users/useradd', views.UserCreateView.as_view(), name = 'user_add'),
 #create
-    path('top/create/', views.CreateSectionListView.as_view(), name = 'create_section_list'),
-    path('top/create/createsection', views.CreateSectionView.as_view(), name = 'section_create'),
-    path('top/create/<int:pk>/job', views.CreateJobListView.as_view(), name = 'create_job_list'),
-    path('top/create/job/createjob', views.CreateJobView.as_view(), name = 'job_create'),
+    path('edit/', views.CreateSectionListView.as_view(), name = 'create_section_list'),
+    path('edit/createsection', views.CreateSectionView.as_view(), name = 'section_create'),
+    path('edit/<int:section_id>/job_list', views.CreateJobListView.as_view(), name = 'create_job_list'),
+    path('edit/createjob', views.CreateJobView.as_view(), name = 'job_create'),
+    path('edit/<int:section_id>/<int:job_id>/item_list', views.CreateItemListView.as_view(), name = 'create_item_list'),
 ]

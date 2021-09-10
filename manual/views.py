@@ -60,6 +60,7 @@ class MethodListView(LoginRequiredMixin, ListView):
         return context
 
 
+#Auth
 class UserListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'manual/users/user_list.html'
@@ -85,7 +86,7 @@ class UserCreateView(CreateView):
     def get_success_url(self):
         return reverse_lazy("manual:user_list") 
 
-
+#EDIT
 class CreateSectionListView(LoginRequiredMixin, ListView):
     model = Section 
     template_name = 'manual/create/list.html'
@@ -95,7 +96,6 @@ class CreateSectionView(CreateView):
     model = Section
     template_name = "manual/create/create.html"
     form_class = CreateSectionForm
-    success_url = reverse_lazy("manual:create_section_list")
     
     def get_success_url(self):
         return reverse_lazy("manual:create_section_list") 
@@ -105,27 +105,47 @@ class CreateJobListView(LoginRequiredMixin, ListView):
     model = Job
     template_name = 'manual/create/job/list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['section'] = self.section
-        return context
-
     def get_queryset(self):
-        section = self.section = get_object_or_404(Section, pk=self.kwargs['pk'])
+        section = self.section = get_object_or_404(Section, pk=self.kwargs['section_id'])
         queryset = super().get_queryset().filter(section=section)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['section_id'] = self.section
+        return context
 
-class CreateJobView(CreateView):
+
+class CreateJobView(LoginRequiredMixin, CreateView):
     model = Job
     template_name = "manual/create/job/create.html"
     form_class = CreateJobForm
 
-    def get_context_data(self, **kwargs):
-        return CreateView.get_context_data(self, **kwargs)
-    
-    def form_valid(self, form):
-        return CreateView.form_valid(self, form);
-    
     def get_success_url(self):
-        return reverse_lazy('manual:create_section_list')
+        return reverse_lazy("manual:create_job_list") 
+
+
+class CreateItemListView(LoginRequiredMixin, ListView):
+    model = Item
+    template_name = 'manual/create/item/list.html'
+
+    def get_queryset(self):
+        job = self.job = get_object_or_404(Job, pk=self.kwargs['job_id'])
+        queryset = super().get_queryset().filter(job=job)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['job_id'] = self.job
+        return context
+
+"""
+class CreateItemView(LoginRequiredMixin, CreateView):
+    model = Item
+    template_name = "manual/create/item/create.html"
+    form_class = CreateItemForm
+
+    def get_success_url(self):
+        return reverse_lazy("manual:create_item_list") 
+
+"""
