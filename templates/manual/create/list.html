@@ -7,7 +7,7 @@
   </head>
   <body>
     {% for a in section_list %}
-    <a href="{% url 'manual:create_job_list' a.pk %}">
+    <a href="{% url 'manual:create_job_list' a.pk%}">
       <h3>{{ a.section_name }}</h3>
     </a>
     <button href="#">編集</button>

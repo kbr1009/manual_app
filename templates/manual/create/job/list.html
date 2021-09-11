@@ -14,7 +14,7 @@
     <button href="#">削除</button>
     {% endfor %}
     <div>
-    <button onclick="location.href='{% url 'manual:job_create' %}'">{{ section }}に項目を追加する</button>
+    <button onclick="location.href='{% url 'manual:job_create' section_pk.id %}'">{{ section_pk }}に項目を追加する</button>
     </div>
   </body>
 </html>
