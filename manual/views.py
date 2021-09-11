@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from .forms import UserAddForm, CreateSectionForm
 from .forms import CreateJobForm
+from django.urls import reverse
 
 class SectionListView(LoginRequiredMixin, ListView):
     model = Section 
@@ -112,17 +113,17 @@ class CreateJobListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['section_id'] = self.section
+        context['section_pk'] = self.section
         return context
 
 
 class CreateJobView(LoginRequiredMixin, CreateView):
     model = Job
     template_name = "manual/create/job/create.html"
-    form_class = CreateJobForm
+    fields = ('job_name',)
 
     def get_success_url(self):
-        return reverse_lazy("manual:create_job_list") 
+        return reverse('manual:create_job_list', kwargs={'section_id': self.kwargs.get('section_id')})
 
 
 class CreateItemListView(LoginRequiredMixin, ListView):
