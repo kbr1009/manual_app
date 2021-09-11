@@ -15,10 +15,11 @@ urlpatterns = [
     path('top/users/<int:pk>', views.UserDetailView.as_view(), name = 'user_detail'),
     path('top/users/<int:pk>/delete', views.UserDeleteView.as_view(), name = 'user_delete'),
     path('top/users/useradd', views.UserCreateView.as_view(), name = 'user_add'),
+#CreateList
+    path('edit/', views.CreateSectionListView.as_view(), name = 'edit_section_list'),
+    path('edit/<str:section_id>/job_list', views.CreateJobListView.as_view(), name = 'edit_job_list'),
+    path('edit/<int:section_id>/<int:job_id>/item_list', views.CreateItemListView.as_view(), name = 'edit_item_list'),
 #create
-    path('edit/', views.CreateSectionListView.as_view(), name = 'create_section_list'),
     path('edit/section_create', views.CreateSectionView.as_view(), name = 'section_create'),
-    path('edit/<str:section_id>/job_list', views.CreateJobListView.as_view(), name = 'create_job_list'),
     path('edit/<str:section_id>/job_create', views.CreateJobView.as_view(), name = 'job_create'),
-    path('edit/<int:section_id>/<int:job_id>/item_list', views.CreateItemListView.as_view(), name = 'create_item_list'),
 ]
