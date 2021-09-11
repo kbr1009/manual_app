@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
   </head>
   <body>
+    <a href={% url 'manual:top' %}>Home</a>
+    <h3>セクション一覧</h3>
     {% for a in section_list %}
     <a href="{% url 'manual:edit_job_list' a.pk%}">
       <h3>{{ a.section_name }}</h3>
@@ -14,7 +16,7 @@
     <button href="#">削除</button>
     {% endfor %}
     <div>
-    <button onclick="location.href='{% url 'manual:section_create' %}'">セクションを追加する</button>
+    <button onclick="location.href='{% url 'manual:section_create' %}'">セクションの項目追加</button>
     </div>
   </body>
 </html>

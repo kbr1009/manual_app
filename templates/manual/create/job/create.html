@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,12 @@
 </head>
 <body>
 <div class="container">
-  <h1>{{ section }}に項目を追加する</h1>
+  <h1>{{ section_pk }}に項目を追加する</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">送信</button>
+    <button type="submit" class="btn btn-primary">{{ section_pk }}に項目を追加</button>
+    <button onclick="location.href='{% url 'manual:edit_job_list' section_pk.id %}'">キャンセル</button>
   </form>
 </div>
 </body>
