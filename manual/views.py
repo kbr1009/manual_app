@@ -119,7 +119,8 @@ class EditJobListView(LoginRequiredMixin, ListView):
 
 class CreateJobView(LoginRequiredMixin, CreateView):
     template_name = "manual/create/job/create.html"
-    form_class = CreateJobForm
+    #fields = ('job_name', )
+    form_class = CreateJobForm 
 
     def get_context_data(self, **kwargs):
         section = self.section = get_object_or_404(Section, pk=self.kwargs['section_id'])

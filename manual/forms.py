@@ -25,6 +25,7 @@ class CreateSectionForm(forms.ModelForm):
         model = Section
         fields = ("section_name",)
 
+
 class CreateJobForm(forms.ModelForm):
     class Meta:
         model = Job
