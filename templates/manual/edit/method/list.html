@@ -1,0 +1,130 @@
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container">
+
+  <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
+    <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:job_list' item.job.section_id %}"><span style="color: var(--pink);">{{ item.job.section }}</span></a></li>
+    <li class="breadcrumb-item"><a href="{{request.META.HTTP_REFERER}}"><span style="color: var(--pink);">{{ item.job.job_name }}</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ item.item_name }}</span></li>
+  </ol>
+
+  {% if item.purpose %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="border rounded" style="height: 100px;margin: 10px;border-radius: 5px;color: rgb(33, 37, 41);border: 1px none var(--gray) ;">
+        <h1 style="text-align: center;font-size: 25px;padding: 5px;color: var(--pink);">目的</h1>
+        <p style="text-align: center;color: var(--gray);">{{ item.purpose }}</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if item.success %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="border rounded" style="height: 100px;margin: 10px;border-radius: 5px;border: 1px none var(--pink) ;">
+        <h1 style="text-align: center;font-size: 25px;padding: 5px;color: var(--pink);">達成基準</h1>
+        <p style="text-align: center;color: var(--gray);">{{ item.success }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="container">
+  {% for d in method_list %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-3" style="border-radius: 5px;border-style: none;border-color: var(--gray);">
+        <div class="card-body" style="border-style: none;">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <h1 class="text-center" style="font-size: 20px;color: var(--pink);">
+                        <strong style="font-size: 34px;">{{ forloop.counter }}.&nbsp;</strong>{{ d.method_name }}
+                      </h1>
+                    </div>
+                  </div>
+
+                  {% for procedure in d.procedure.all %}
+                  <div class="row">
+                    <div class="col" style="border-radius: 5px;border: 1px solid rgba(33,37,41,0.17);">
+                      <div class="row" style="margin: 5px;">
+                        <div class="col">
+                          <small style="font-size: 15.8px;border-style: none;border-color: var(--gray);color: var(--dark);">
+                            <strong class="border-primary" style="color: var(--gray-dark);border-radius: 32px;border: 1px none var(--pink);">
+                              &nbsp;{{ forloop.counter }}.&nbsp;&nbsp;
+                            </strong>
+                            {{ procedure.procedure_name }}
+                          </small>
+                        </div>
+                      </div>
+
+                      {% if procedure.point or procedure.caution or procedure.tips %}
+                      <div class="row" style="margin: 5px;">
+                        <div class="col" style="background: rgba(244,237,124,0);">
+
+                          {% if procedure.point  %}
+                          <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--blue);border-style: none;height: 30px;width: 87px;">ポイント</a>
+                            <p style="border-style: none;color: var(--blue);font-size: 16px;margin: 9px;">・{{ procedure.point }}</p>
+                          </div>
+                          {% endif %}
+
+                          {% if procedure.caution %}
+                          <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--red);border-style: none;height: 30px;width: 87px;">注意点</a>
+                            <p style="border-style: none;color: var(--red);font-size: 16px;margin: 9px;">・{{ procedure.caution }}</p>
+                          </div>
+                          {% endif %}
+
+                          {% if procedure.tips %}
+                          <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--success);border-style: none;height: 30px;width: 87px;">コツ</a>
+                            <p style="border-style: none;color: var(--success);font-size: 16px;margin: 9px;">・{{ procedure.tips }}</p>
+                          </div>
+                          {% endif %}
+
+                        </div>
+                      </div> 
+                      {% endif %}
+
+                      {% if procedure.img %}
+                      <div class="row justify-content-center">
+                        <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;">
+                          <div class="card clean-card text-center">
+                            <img class="card-img-top w-100 d-block" src="{{ MEDIA_URL }}{{ procedure.img }}" style="border-style: none;" />
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}
+
+
+                      {% if procedure.video %}
+                      <div class="row justify-content-center" style="border-style: none;">
+                        <div class="col-sm-6 col-lg-5" style="padding-right: 0px;padding-left: 0px;border-style: none;">
+                          <div class="card clean-card text-center" style="border-style: none;">
+                            <video width="250" height="315" controls style="height: 191px;">
+                              <source src="{{ MEDIA_URL }}{{ procedure.video }}" type="video/mp4"></source>
+                            </video>
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}
+
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

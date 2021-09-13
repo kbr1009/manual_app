@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <a href={% url 'manual:top' %}>Home</a>
+    <h3>セクション一覧</h3>
+    <form action="" method="POST">
+    {% for a in section_list %}
+    <a href="{% url 'manual:edit_job_list' a.pk%}"><p>{{ a.section_name }}<input type="checkbox" name="delete" value="{{ a.pk }}"></p></a>
+        <a> - </a><a href="{% url 'manual:section_update' a.pk %}">編集</a><a> - </a>
+    {% csrf_token %}
+    {% endfor %}
+    <div>
+    <button type="submit">選択した項目を削除</button>
+    </div>
+    </form>
+    <div>
+     <button onclick="location.href='{% url 'manual:section_create' %}'">セクションの項目追加</button>
+       <!--<button href="{% url 'manual:section_create' %}">セクションの項目追加</button> -->
+    </div>
+  </body>
+</html>
