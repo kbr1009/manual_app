@@ -1,4 +1,4 @@
-from django.shortcuts import render,resolve_url, get_object_or_404
+from django.shortcuts import render,resolve_url, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView
 from django.views.generic import DetailView, DeleteView
 from .models import Section, Job, Item, Method, Procedure
@@ -90,21 +90,25 @@ class UserCreateView(CreateView):
 #EDIT
 class EditSectionListView(LoginRequiredMixin, ListView):
     model = Section 
-    template_name = 'manual/create/list.html'
+    template_name = 'manual/edit/list.html'
 
+    def post(self, request):
+        post_pks = request.POST.getlist('delete')
+        Section.objects.filter(pk__in=post_pks).delete()
+        return redirect("manual:edit_section_list") 
 
 class CreateSectionView(CreateView):
     model = Section
-    template_name = "manual/create/create.html"
+    template_name = "manual/edit/create.html"
     form_class = CreateSectionForm
-    
+
     def get_success_url(self):
         return reverse_lazy("manual:edit_section_list") 
 
 
 class EditJobListView(LoginRequiredMixin, ListView):
     model = Job
-    template_name = 'manual/create/job/list.html'
+    template_name = 'manual/edit/job/list.html'
 
     def get_queryset(self):
         section = self.section = get_object_or_404(Section, pk=self.kwargs['section_id'])
@@ -118,8 +122,7 @@ class EditJobListView(LoginRequiredMixin, ListView):
 
 
 class CreateJobView(LoginRequiredMixin, CreateView):
-    template_name = "manual/create/job/create.html"
-    #fields = ('job_name', )
+    template_name = "manual/edit/job/create.html"
     form_class = CreateJobForm 
 
     def get_context_data(self, **kwargs):
@@ -133,14 +136,13 @@ class CreateJobView(LoginRequiredMixin, CreateView):
         form.instance.section = section_instance
         return super().form_valid(form)
 
-
     def get_success_url(self):
         return reverse('manual:edit_job_list', kwargs={'section_id': self.kwargs.get('section_id')})
 
 
 class EditItemListView(LoginRequiredMixin, ListView):
     model = Item
-    template_name = 'manual/create/item/list.html'
+    template_name = 'manual/edit/item/list.html'
 
     def get_queryset(self):
         job = self.job = get_object_or_404(Job, pk=self.kwargs['job_id'])
