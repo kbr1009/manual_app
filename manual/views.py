@@ -128,6 +128,12 @@ class CreateJobView(LoginRequiredMixin, CreateView):
         context['section_pk'] = self.section
         return context
 
+    def form_valid(self, form):
+        section_instance = get_object_or_404(Section, pk=self.kwargs['section_id'])
+        form.instance.section = section_instance
+        return super().form_valid(form)
+
+
     def get_success_url(self):
         return reverse('manual:edit_job_list', kwargs={'section_id': self.kwargs.get('section_id')})
 
