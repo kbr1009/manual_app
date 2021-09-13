@@ -1,6 +1,6 @@
 from django.shortcuts import render,resolve_url, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView
-from django.views.generic import DetailView, DeleteView
+from django.views.generic import DetailView, DeleteView, UpdateView
 from .models import Section, Job, Item, Method, Procedure
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
@@ -97,10 +97,24 @@ class EditSectionListView(LoginRequiredMixin, ListView):
         Section.objects.filter(pk__in=post_pks).delete()
         return redirect("manual:edit_section_list") 
 
-class CreateSectionView(CreateView):
+class CreateSectionView(LoginRequiredMixin, CreateView):
     model = Section
     template_name = "manual/edit/create.html"
     form_class = CreateSectionForm
+
+    def get_success_url(self):
+        return reverse_lazy("manual:edit_section_list") 
+
+
+class UpdateSectionView(LoginRequiredMixin, UpdateView):
+    template_name = 'manual/edit/update.html'
+    model = Section
+    fields = ['section_name',]
+ 
+    def get_form(self):
+        form = super(UpdateSectionView, self).get_form()
+        form.fields['section_name'].label = '編集するセクション名'
+        return form
 
     def get_success_url(self):
         return reverse_lazy("manual:edit_section_list") 
