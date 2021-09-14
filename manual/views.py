@@ -87,6 +87,8 @@ class UserCreateView(CreateView):
     def get_success_url(self):
         return reverse_lazy("manual:user_list") 
 
+
+
 #EDIT
 class EditSectionListView(LoginRequiredMixin, ListView):
     model = Section 
@@ -133,6 +135,11 @@ class EditJobListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['section_pk'] = self.section
         return context
+
+    def post(self, request, section_id):
+        post_pks = request.POST.getlist('delete')
+        Job.objects.filter(pk__in=post_pks).delete()
+        return redirect('manual:edit_job_list', section_id)
 
 
 class CreateJobView(LoginRequiredMixin, CreateView):

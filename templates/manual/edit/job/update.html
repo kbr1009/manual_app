@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+  <h1>セクションを編集</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">送信</button>
+    <button onclick="location.href='{% url 'manual:edit_section_list' %}'">戻る</button>
+  </form>
+</div>
+</body>
+</html>
+
