@@ -9,24 +9,11 @@
   <body>
     <a href="{% url 'manual:edit_section_list' %}">セクション(編集)</a>
     <a>/ {{ section_pk }}</a>
-
-<!--
-    {% for b in job_list %}
-    <a href="{% url 'manual:edit_item_list' b.section_id b.pk %}">
-      <h3>{{ b.job_name }}</h3>
-    </a>
-    <button href="#">編集</button>
-    <button href="#">削除</button>
-    {% endfor %}
--->
-
     <form action="" method="POST">
     {% csrf_token %}
     {% for b in job_list %}
     <a href="{% url 'manual:edit_item_list' b.section_id b.pk %}"><p>{{ b.job_name }}<input type="checkbox" name="delete" value="{{ b.pk }}"></p></a>
         <a> - </a><a href="#">編集</a><a> - </a>
-        <a>{{ b.section_id }}</a>
-        <a>{{ b.pk }}</a>
     {% endfor %}
     <div>
     <button type="submit">選択した項目を削除</button>
