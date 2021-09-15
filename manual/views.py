@@ -61,6 +61,7 @@ class MethodListView(LoginRequiredMixin, ListView):
         return context
 
 
+
 #Auth
 class UserListView(LoginRequiredMixin, ListView):
     model = User
@@ -165,6 +166,11 @@ class UpdateJobView(LoginRequiredMixin, UpdateView):
     template_name = 'manual/edit/job/update.html'
     model = Job
     fields = ['job_name',]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['section_pk'] = self.object.section_id 
+        return context
 
     def get_form(self):
         form = super(UpdateJobView, self).get_form()
