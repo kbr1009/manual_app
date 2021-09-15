@@ -161,6 +161,20 @@ class CreateJobView(LoginRequiredMixin, CreateView):
         return reverse('manual:edit_job_list', kwargs={'section_id': self.kwargs.get('section_id')})
 
 
+class UpdateJobView(LoginRequiredMixin, UpdateView):
+    template_name = 'manual/edit/job/update.html'
+    model = Job
+    fields = ['job_name',]
+
+    def get_form(self):
+        form = super(UpdateJobView, self).get_form()
+        form.fields['job_name'].label = '編集する作業名'
+        return form
+
+    def get_success_url(self):
+        return reverse('manual:edit_job_list', kwargs={'section_id': self.object.section_id})
+
+
 class EditItemListView(LoginRequiredMixin, ListView):
     model = Item
     template_name = 'manual/edit/item/list.html'
@@ -175,30 +189,47 @@ class EditItemListView(LoginRequiredMixin, ListView):
         context['job_pk'] = self.job
         return context
 
+    def post(self, request, job_id):
+        post_pks = request.POST.getlist('delete')
+        Item.objects.filter(pk__in=post_pks).delete()
+        return redirect('manual:edit_item_list', job_id)
+
 """
 class CreateItemView(LoginRequiredMixin, CreateView):
-    model = Item
-    template_name = "manual/create/item/create.html"
-    form_class = CreateItemForm
-
-    def get_success_url(self):
-        return reverse_lazy("manual:create_item_list") 
-
-"""
-
-"""
-class CreateMethodListView(LoginRequiredMixin, ListView):
-    model = Method
-    template_name = 'manual/create/Method/list.html'
-
-    def get_queryset(self):
-        job = self.job = get_object_or_404(Item, pk=self.kwargs['pk'])
-        queryset = super().get_queryset().filter(item=item)
-        return queryset
+    template_name = "manual/edit/item/create.html"
+    form_class = CreateItemForm 
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['item'] = self.item
+        job = self.job = get_object_or_404(Job, pk=self.kwargs['job_id'])
+        context = super(CreatItemView, self).get_context_data(**kwargs)
+        context['job_pk'] = self.job
         return context
 
+    def form_valid(self, form):
+        section_instance = get_object_or_404(Section, pk=self.kwargs['section_id'])
+        form.instance.section = section_instance
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('manual:edit_job_list', kwargs={'section_id': self.kwargs.get('section_id')})
+
+
+class UpdateItemView(LoginRequiredMixin, UpdateView):
+    template_name = 'manual/edit/job/update.html'
+    model = Job
+    fields = ['job_name',]
+
+    def get_context_data(self, **kwargs):
+        section = self.section = get_object_or_404(Section, pk=self.kwargs['section_id'])
+        context = super(CreateJobView, self).get_context_data(**kwargs)
+        context['section_pk'] = self.section
+        return context
+
+    def get_form(self):
+        form = super(UpdateSectionView, self).get_form()
+        form.fields['section_name'].label = '編集するセクション名'
+        return form
+
+    def get_success_url(self):
+        return reverse('manual:edit_job_list', kwargs={'section_id': self.kwargs.get('section_id')})
 """

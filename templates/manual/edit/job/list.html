@@ -4,19 +4,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>manual-app</title>
   </head>
   <body>
+    <a href="{% url 'manual:top' %}">Home</a>
+    <a>/</a>
     <a href="{% url 'manual:edit_section_list' %}">セクション(編集)</a>
     <a>/ {{ section_pk }}</a>
     <form action="" method="POST">
     {% csrf_token %}
     {% for b in job_list %}
     <a href="{% url 'manual:edit_item_list' b.section_id b.pk %}"><p>{{ b.job_name }}<input type="checkbox" name="delete" value="{{ b.pk }}"></p></a>
-        <a> - </a><a href="#">編集</a><a> - </a>
+    <a> - </a><a href="{% url 'manual:job_update' b.pk %}">編集</a><a> - </a>
     {% endfor %}
     <div>
     <button type="submit">選択した項目を削除</button>
+    <a>{{ section_pk.id }}</a>
     </div>
     </form>
     <div>
