@@ -12,6 +12,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">送信</button>
+    <button onclick="location.href='{% url 'manual:edit_job_list' section_pk %}'">キャンセル</button>
   </form>
 </div>
 </body>
