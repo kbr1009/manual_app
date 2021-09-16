@@ -22,7 +22,9 @@ urlpatterns = [
     path('edit/<int:section_id>/<int:job_id>/item_list', views.EditItemListView.as_view(), name = 'edit_item_list'),
 #create
     path('edit/section_create', views.CreateSectionView.as_view(), name = 'section_create'),
-    path('edit/<str:section_id>/job_create', views.CreateJobView.as_view(), name = 'job_create'),
+    path('edit/<int:section_id>/job_create', views.CreateJobView.as_view(), name = 'job_create'),
+    path('edit/<int:section_id>/<int:job_id>/item_create', views.CreateItemView.as_view(), name = 'item_create'),
+
 #update
     path('edit/<int:pk>/section_update', views.UpdateSectionView.as_view(), name = 'section_update'),
     path('edit/<int:pk>/job_update', views.UpdateJobView.as_view(), name = 'job_update'),
