@@ -12,8 +12,8 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">{{ section_pk }}に項目を追加</button>
-    <button onclick="location.href='{% url 'manual:edit_job_list' section_pk.id %}'">キャンセル</button>
   </form>
+      <button onclick="location.href='{% url 'manual:edit_job_list' section_pk.id %}'">キャンセル</button>
 </div>
 </body>
 </html>
