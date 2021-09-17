@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">送信</button>
   </form>
+      <button onclick="location.href='{% url 'manual:edit_item_list' job_pk.section_id job_pk.id %}'">キャンセル</button>
 </div>
 </body>
 </html>
