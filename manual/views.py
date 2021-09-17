@@ -250,8 +250,3 @@ class UpdateItemView(LoginRequiredMixin, UpdateView):
             'section_id': self.object.job.section.id
             }
         )
-
-"""
-    def get_success_url(self):
-        return reverse('manual:edit_item_list', self.object.job.id, self.object.job.section)
-"""
