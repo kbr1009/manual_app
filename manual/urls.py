@@ -28,4 +28,5 @@ urlpatterns = [
 #update
     path('edit/<int:pk>/section_update', views.UpdateSectionView.as_view(), name = 'section_update'),
     path('edit/<int:pk>/job_update', views.UpdateJobView.as_view(), name = 'job_update'),
+    path('edit/<int:pk>/item_update', views.UpdateItemView.as_view(), name = 'item_update'),
 ]

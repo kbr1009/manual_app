@@ -35,4 +35,4 @@ class CreateJobForm(forms.ModelForm):
 class CreateItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ("item_name",)
+        fields = ("item_name", "purpose", "success", )

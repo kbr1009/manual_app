@@ -201,10 +201,10 @@ class EditItemListView(LoginRequiredMixin, ListView):
         context['job_pk'] = self.job
         return context
 
-    def post(self, request, job_id):
+    def post(self, request, section_id, job_id):
         post_pks = request.POST.getlist('delete')
         Item.objects.filter(pk__in=post_pks).delete()
-        return redirect('manual:edit_item_list', job_id)
+        return redirect('manual:edit_item_list', section_id, job_id)
 
 class CreateItemView(LoginRequiredMixin, CreateView):
     template_name = "manual/edit/item/create.html"
@@ -228,11 +228,11 @@ class CreateItemView(LoginRequiredMixin, CreateView):
             }
         )
 
-"""
+
 class UpdateItemView(LoginRequiredMixin, UpdateView):
     template_name = 'manual/edit/item/update.html'
     model = Item
-    fields = ['item_name',]
+    fields = ['item_name', 'purpose', 'success',]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -240,10 +240,18 @@ class UpdateItemView(LoginRequiredMixin, UpdateView):
         return context
 
     def get_form(self):
-        form = super(UpdateJobView, self).get_form()
+        form = super(UpdateItemView, self).get_form()
         form.fields['item_name'].label = '編集する項目名'
         return form
 
     def get_success_url(self):
-        return reverse('manual:edit_item_list', kwargs={'job_id': self.object.job_id})
+        return reverse('manual:edit_item_list', kwargs={
+            'job_id': self.object.job.id,
+            'section_id': self.object.job.section.id
+            }
+        )
+
+"""
+    def get_success_url(self):
+        return reverse('manual:edit_item_list', self.object.job.id, self.object.job.section)
 """
