@@ -10,10 +10,11 @@
 
   <form method="POST" action="">
     {% csrf_token %}
-
     {{ form.as_p }}
 
-    <input type="submit" id="save" value="Save">
+    <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">ユーザを追加</button>
   </form>    
+      <button onclick="location.href='{% url 'manual:user_list' %}'" type="button" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">キャンセル</button>
+
 </div>
 {% endblock %}

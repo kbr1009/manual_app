@@ -3,7 +3,7 @@
 {% load static %}
 
 <!--
-<div class="container" style="padding: 15px;">
+  <div class="container" style="padding: 15px;">
 -->
 <div class="container" style="background: rgba(255,255,255,0);">
   <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
@@ -14,39 +14,30 @@
   <div class="container" style="padding: 1px;">
     <div class="container-fluid">
       <div class="card shadow">
-        <div class="card-body">
+        <div class="card-body" style="border-color: rgba(133,135,150,0);">
           <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
             <table class="table my-0" id="dataTable">
               <thead>
                 <tr>
-                  <th>名前</th>
-                  <th>ログイン</th>
-                  <th>ユーザ名</th>
-                  <th>所属</th>
+                  <th style="width: 170px;border-style: none;border-bottom-style: none;">名前</th>
+                  <th style="width: 170px;border-style: none;">ユーザ名</th>
+                  <th style="width: 196px;border-style: none;">ログイン</th>
                 </tr>
               </thead>
               <tbody>
                 {% for i in user_list %}
                 <tr>
                   <td><a href="{% url 'manual:user_detail' i.pk %}">{{ i.last_name }} {{ i.first_name }}</a></td>
-                  <td>{{ i.last_login }}</td>
                   <td>{{ i.username }}</td>
-                  <td>  </td>
+                  <td>{{ i.last_login }}</td>
                 </tr>
                 {% endfor %}
               </tbody>
-              <tfoot>
-              </tfoot>
             </table>
           </div>
           <div class="row">
             <div class="col-md-6 align-self-center">
-              <button onclick="location.href='{% url 'manual:user_add' %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;">ユーザを追加</button>
-            </div>
-            <div class="col-md-6">
-              <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                <ul class="pagination"></ul>
-              </nav>
+              <button onclick="location.href='{% url 'manual:user_add' %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">ユーザを追加</button>
             </div>
           </div>
         </div>
@@ -55,4 +46,3 @@
   </div>
 </div>
 {% endblock %}
-
