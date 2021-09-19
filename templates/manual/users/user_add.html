@@ -7,14 +7,14 @@
     <li class="breadcrumb-item"><a href="{{ request.META.HTTP_REFERER }}"><span style="color: var(--pink);">ユーザ一覧</span></a></li>
     <li class="breadcrumb-item active"><span style="color: var(--secondary);">ユーザ一登録画面</span></li>
   </ol>
+  <div>
+    <form method="POST" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
 
-  <form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">ユーザを追加</button>
-  </form>    
-      <button onclick="location.href='{% url 'manual:user_list' %}'" type="button" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">キャンセル</button>
-
+      <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">ユーザを追加</button>
+    </form>    
+    <button onclick="location.href='{% url 'manual:user_list' %}'" type="button" class="btn btn-primary" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: none;margin: 5px;">キャンセル</button>
+  </div>
 </div>
 {% endblock %}
