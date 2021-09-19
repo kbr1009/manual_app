@@ -1,28 +1,58 @@
-<!DOCTYPE html>
-<!--section_list-->
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-  <body>
-    <a href={% url 'manual:top' %}>Home</a>
-    <a>/ セクション(編集)</a>
-    <h3>セクション一覧</h3>
-    <form action="" method="POST">
-    {% for a in section_list %}
-    <a href="{% url 'manual:edit_job_list' a.pk%}"><p>{{ a.section_name }}<input type="checkbox" name="delete" value="{{ a.pk }}"></p></a>
-        <a> - </a><a href="{% url 'manual:section_update' a.pk %}">編集</a><a> - </a>
-    {% csrf_token %}
-    {% endfor %}
-    <div>
-    <button type="submit">選択した項目を削除</button>
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container" style="background: rgba(255,255,255,0);">
+  <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
+    <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">セクション編集</span></li>
+  </ol>
+  <div class="row">
+    <div class="container-fluid">
+      <div class="card shadow">
+        <div class="card-body" style="border-color: rgba(133,135,150,0);">
+          <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+            <table class="table my-0" id="dataTable">
+              <thead>
+                <tr>
+                  <th style="width: 90px;border-style: none;border-bottom-style: none;">順</th>
+                  <th style="width: 1000px;border-style: none;border-bottom-style: none;">セクション名</th>
+                  <th style="width: 400px;border-style: none;"></th>
+                  <th style="width: 270px;border-style: none;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <form action="" method="POST">
+                  {% for a in section_list %}
+                  <tr>
+                    <td>
+                      {{ forloop.counter }}
+                    </td>
+                    <td>
+                      <a href="{% url 'manual:edit_job_list' a.pk%}">{{ a.section_name }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'manual:section_update' a.pk %}">編集</a>
+                    </td>
+                    <td>
+                      <input type="checkbox" name="delete" value="{{ a.pk }}">
+                    </td>
+                  </tr>
+                  {% csrf_token %}
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-md-6 align-self-center">
+              <button type="submit" class="btn btn-primary" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: rgba(78,115,223,0);">選択した項目を削除</button>
+                </form>
+                <button onclick="location.href='{% url 'manual:section_create' %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">セクションを追加</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </form>
-    <div>
-     <button onclick="location.href='{% url 'manual:section_create' %}'">セクションの項目追加</button>
-       <!--<button href="{% url 'manual:section_create' %}">セクションの項目追加</button> -->
-    </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}
+
