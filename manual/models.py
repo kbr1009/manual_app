@@ -62,13 +62,13 @@ class Item(SortableMixin):
             blank=False, 
             null=True
             )
-    purpose = models.CharField(
+    purpose = models.TextField(
             verbose_name='目的', 
             max_length=100, 
             blank=True, 
             null=True
             )
-    success = models.CharField(
+    success = models.TextField(
             verbose_name='達成基準', 
             max_length=100, 
             blank=True, 
