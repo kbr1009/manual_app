@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div class="container">
-  <h1>セクションを編集</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">送信</button>
-  </form>
-      <button onclick="location.href='{% url 'manual:edit_section_list' %}'">戻る</button>
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container" style="background: rgba(255,255,255,0);">
+  <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
+    <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_section_list' %}"><span style="color: var(--pink);">セクション編集画面</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">名前の編集</span></li>
+  </ol>
+
+  <div class="container">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">編集を実行</button>
+    </form>
+    <div>
+      <button onclick="location.href='{% url 'manual:edit_section_list' %}'" class="btn btn-primary" type="button" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: none;margin: 5px;">戻る</button>
+
+    </div>
+  </div>
 </div>
-</body>
-</html>
+{% endblock %}
 
