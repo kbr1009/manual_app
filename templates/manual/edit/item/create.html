@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container" style="background: rgba(255,255,255,0);">
+  <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
+    <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_section_list' %}"><span style="color: var(--pink);">セクション編集</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_job_list' job_pk.section_id %}"><span style="color: var(--pink);">{{ job_pk.section }}の作業名</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_item_list' job_pk.section_id job_pk.id %}"><span style="color: var(--pink);">{{ job_pk.job_name }}の作業項目</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">項目名新規追加</span></li>
+  </ol>
+
 <div class="container">
-  <h1>{{ job_pk.job_name }}に項目を追加する</h1>
-  <a>{{ job_pk.section_id }}</a>
-  <a>{{ job_pk.id }}
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">送信</button>
+    <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">作業項目を追加</button>
   </form>
-      <button onclick="location.href='{% url 'manual:edit_item_list' job_pk.section_id job_pk.id %}'">キャンセル</button>
+  <div>
+    <button onclick="location.href='{% url 'manual:edit_item_list' job_pk.section_id job_pk.id %}'" class="btn btn-primary" type="button" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: none;margin: 5px;">戻る</button>
+  </div>
 </div>
-</body>
-</html>
+</div>
+{% endblock %}
 
