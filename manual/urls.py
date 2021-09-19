@@ -20,6 +20,7 @@ urlpatterns = [
     path('edit/', views.EditSectionListView.as_view(), name = 'edit_section_list'),
     path('edit/<str:section_id>/job_list', views.EditJobListView.as_view(), name = 'edit_job_list'),
     path('edit/<int:section_id>/<int:job_id>/item_list', views.EditItemListView.as_view(), name = 'edit_item_list'),
+    path('edit/<int:section_id>/<int:job_id>/<int:item_id>/method_list', views.EditMethodListView.as_view(), name = 'edit_method_list'),
 #create
     path('edit/section_create', views.CreateSectionView.as_view(), name = 'section_create'),
     path('edit/<int:section_id>/job_create', views.CreateJobView.as_view(), name = 'job_create'),

@@ -17,7 +17,7 @@
     <form action="" method="POST">
       {% csrf_token %}
       {% for b in item_list %}
-      <a href="#">
+      <a href="{% url 'manual:edit_method_list' b.job.section_id b.job_id b.pk  %}">
         <h3>{{ forloop.counter }}.{{ b.item_name }}<input type="checkbox" name="delete" value="{{ b.pk }}"></h3>
       </a>
       <h5><a>目的：</a>{{ b.purpose }}</h5>
