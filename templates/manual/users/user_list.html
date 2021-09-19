@@ -7,28 +7,51 @@
     <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
     <li class="breadcrumb-item active"><span style="color: var(--secondary);">ユーザ一覧</span></li>
   </ol>
-  {% for i in user_list %}
-  <div class="row user-list">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 user-item">
-      <div class="user-container" style="border-color: var(--pink);border-radius: 4px;">
-        <a class="user-avatar" href="#">
-          <img class="rounded-circle img-fluid" src="{% static 'img/usericon.gif' %}" width="48" height="48" alt="Profile of Mark Smith Peterson">
-        </a>
-        <p class="user-name"><a href="{% url 'manual:user_detail' i.pk %}">{{ i.last_name }} {{ i.first_name }}</a>
-        {% if i.last_login %}
-        <span>＜最終ログイン＞{{ i.last_login }}</span>
-        {% else %}
-        <span>＜最終ログイン＞まだログインしていません</span>
-        {% endif %}
-        </p>
+  <!-- ADD -->
+  <div class="container" style="padding: 1px;">
+    <div class="container-fluid">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+            <table class="table my-0" id="dataTable">
+              <thead>
+                {% for i in user_list %}
+                <tr>
+                  <th>名前</th>
+                  <th>ログイン</th>
+                  <th>ユーザ名</th>
+                  <th>所属</th>
+                </tr>
+                {% endfor %}
+              </thead>
+              <tbody>
+                {% for i in user_list %}
+                <tr>
+                  <td><a href="{% url 'manual:user_detail' i.pk %}">{{ i.last_name }} {{ i.first_name }}</a></td>
+                  <td>{{ i.last_login }}</td>
+                  <td>{{ i.username }}</td>
+                  <td>  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <tfoot>
+              </tfoot>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-md-6 align-self-center">
+              <button onclick="location.href='{% url 'manual:user_add' %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;">ユーザを追加</button>
+            </div>
+            <div class="col-md-6">
+              <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                <ul class="pagination"></ul>
+              </nav>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  {% endfor %}
-  <div class="col">
-    <div>
-      <button onclick="location.href='{% url 'manual:user_add' %}'" class="btn btn-primary btn-sm" type="button"  style="font-size: 14px;background: #f4ed7c;color: rgb(232, 62, 140);border-style: double;border-color: var(--yellow);">Add User</button>
     </div>
   </div>
 </div>
 {% endblock %}
+
