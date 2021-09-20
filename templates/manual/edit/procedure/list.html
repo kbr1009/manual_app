@@ -1,0 +1,61 @@
+{% extends "manual/base.html" %}
+{% block content %}
+
+<div class="container" style="background: rgba(255,255,255,0);">
+  <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
+    <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_section_list' %}"><span style="color: var(--pink);">セクション編集</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_job_list' item_pk.job.section_id %}"><span style="color: var(--pink);">{{ item_pk.job.section }}の作業名</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_item_list' item_pk.job.section.id item_pk.job_id %}"><span style="color: var(--pink);">{{ item_pk.job.job_name }}の作業項目</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ item_pk.item_name }}の作業方法</span></li>
+  </ol>
+  <div class="row">
+    <div class="container-fluid">
+      <div class="card shadow">
+        <div class="card-body" style="border-color: rgba(133,135,150,0);">
+          <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+            <table class="table my-0" id="dataTable">
+              <thead>
+                <tr>
+                  <th style="width: 90px;border-style: none;border-bottom-style: none;">No</th>
+                  <th style="width: 1000px;border-style: none;border-bottom-style: none;">作業方法</th>
+                  <th style="width: 400px;border-style: none;"></th>
+                  <th style="width: 270px;border-style: none;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <form action="" method="POST">
+                  {% for b in method_list %}
+                  <tr>
+                    <td>
+                      {{ forloop.counter }}
+                    </td>
+                    <td>
+                      <a href="#">{{ b.method_name }}</a>
+                    </td>
+                    <td>
+                      <a href="{% url 'manual:method_update' b.pk %}">編集</a>
+                    </td>
+                    <td>
+                      <input type="checkbox" name="delete" value="{{ b.pk }}">
+                    </td>
+                  </tr>
+                  {% csrf_token %}
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-md-6 align-self-center">
+              <button type="submit" class="btn btn-primary" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: rgba(78,115,223,0);">選択項目を削除</button>
+                </form>
+                <button onclick="location.href='{% url 'manual:method_create' item_pk.job.section_id item_pk.job_id item_pk.id %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">作業名を追加</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
