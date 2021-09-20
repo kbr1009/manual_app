@@ -296,26 +296,26 @@ class CreateMethodView(LoginRequiredMixin, CreateView):
             'item_id': self.kwargs.get('item_id')
             }
         )
-"""
-class UpdateItemView(LoginRequiredMixin, UpdateView):
-    template_name = 'manual/edit/item/update.html'
-    model = Item
-    fields = ['item_name', 'purpose', 'success',]
+
+class UpdateMethodView(LoginRequiredMixin, UpdateView):
+    template_name = 'manual/edit/method/update.html'
+    model = Method
+    fields = ['method_name', ]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['job_pk'] = self.object.job
+        context['item_pk'] = self.object.item
         return context
 
     def get_form(self):
-        form = super(UpdateItemView, self).get_form()
-        form.fields['item_name'].label = '編集する項目名'
+        form = super(UpdateMethodView, self).get_form()
+        form.fields['method_name'].label = '編集する作業方法'
         return form
 
     def get_success_url(self):
-        return reverse('manual:edit_item_list', kwargs={
-            'job_id': self.object.job.id,
-            'section_id': self.object.job.section.id
+        return reverse('manual:edit_method_list', kwargs={
+            'section_id': self.object.item.job.section.id,
+            'job_id': self.object.item.job.id,
+            'item_id': self.object.item.id
             }
         )
-"""

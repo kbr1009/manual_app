@@ -37,6 +37,7 @@ class CreateItemForm(forms.ModelForm):
         model = Item
         fields = ("item_name", "purpose", "success", )
 
+
 class CreateMethodForm(forms.ModelForm):
     class Meta:
         model = Method
