@@ -21,15 +21,18 @@ urlpatterns = [
     path('edit/<str:section_id>/job_list', views.EditJobListView.as_view(), name = 'edit_job_list'),
     path('edit/<int:section_id>/<int:job_id>/item_list', views.EditItemListView.as_view(), name = 'edit_item_list'),
     path('edit/<int:section_id>/<int:job_id>/<int:item_id>/method_list', views.EditMethodListView.as_view(), name = 'edit_method_list'),
+    path('edit/<int:section_id>/<int:job_id>/<int:item_id>/<int:method_id>/procedure_list', views.EditProcedureListView.as_view(), name = 'edit_procedure_list'),
 #create
     path('edit/section_create', views.CreateSectionView.as_view(), name = 'section_create'),
     path('edit/<int:section_id>/job_create', views.CreateJobView.as_view(), name = 'job_create'),
     path('edit/<int:section_id>/<int:job_id>/item_create', views.CreateItemView.as_view(), name = 'item_create'),
     path('edit/<int:section_id>/<int:job_id>/<int:item_id>/method_create', views.CreateMethodView.as_view(), name = 'method_create'),
+    path('edit/<int:section_id>/<int:job_id>/<int:item_id>/<int:method_id>/procedure_create', views.CreateProcedureView.as_view(), name = 'procedure_create'),
 
 #update
     path('edit/<int:pk>/section_update', views.UpdateSectionView.as_view(), name = 'section_update'),
     path('edit/<int:pk>/job_update', views.UpdateJobView.as_view(), name = 'job_update'),
     path('edit/<int:pk>/item_update', views.UpdateItemView.as_view(), name = 'item_update'),
     path('edit/<int:pk>/method_update', views.UpdateMethodView.as_view(), name = 'method_update'),
+    path('edit/<int:pk>/procedure_update', views.UpdateProcedureView.as_view(), name = 'procedure_update'),
 ]

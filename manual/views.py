@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from .forms import UserAddForm, CreateSectionForm, CreateJobForm
-from .forms import CreateJobForm, CreateItemForm, CreateMethodForm
+from .forms import CreateJobForm, CreateItemForm, CreateMethodForm, CreateProcedureForm
 from django.urls import reverse
 
 class SectionListView(LoginRequiredMixin, ListView):
@@ -317,5 +317,76 @@ class UpdateMethodView(LoginRequiredMixin, UpdateView):
             'section_id': self.object.item.job.section.id,
             'job_id': self.object.item.job.id,
             'item_id': self.object.item.id
+            }
+        )
+
+
+
+#Edit Procedure
+class EditProcedureListView(LoginRequiredMixin, ListView):
+    model = Procedure
+    template_name = 'manual/edit/procedure/list.html'
+
+    def get_queryset(self):
+        method = self.method = get_object_or_404(Method, pk=self.kwargs['method_id'])
+        queryset = super().get_queryset().filter(method=method)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['method_pk'] = self.method
+        return context
+
+    def post(self, request, section_id, job_id, item_id ,method_id):
+        post_pks = request.POST.getlist('delete')
+        Procedure.objects.filter(pk__in=post_pks).delete()
+        return redirect('manual:edit_procedure_list', section_id, job_id, item_id, method_id)
+
+
+class CreateProcedureView(LoginRequiredMixin, CreateView):
+    template_name = "manual/edit/procedure/create.html"
+    form_class = CreateProcedureForm
+
+    def get_context_data(self, **kwargs):
+        method = self.method = get_object_or_404(Method, pk=self.kwargs['method_id'])
+        context = super(CreateProcedureView, self).get_context_data(**kwargs)
+        context['method_pk'] = self.method
+        return context
+
+    def form_valid(self, form):
+        method_instance = get_object_or_404(Method, pk=self.kwargs['method_id'])
+        form.instance.method = method_instance
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('manual:edit_procedure_list', kwargs={
+            'section_id': self.kwargs.get('section_id'),
+            'job_id': self.kwargs.get('job_id'),
+            'item_id': self.kwargs.get('item_id'),
+            'method_id': self.kwargs.get('method_id')
+            }
+        )
+
+class UpdateProcedureView(LoginRequiredMixin, UpdateView):
+    template_name = 'manual/edit/procedure/update.html'
+    model = Procedure
+    fields = ['procedure_name', ]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['method_pk'] = self.object.method
+        return context
+
+    def get_form(self):
+        form = super(UpdateMethodView, self).get_form()
+        form.fields['procedure_name'].label = '編集する作業手順'
+        return form
+
+    def get_success_url(self):
+        return reverse('manual:edit_method_list', kwargs={
+            'section_id': self.object.method.item.job.section.id,
+            'job_id': self.object.method.item.job.id,
+            'item_id': self.object.method.item.id,
+            'method_id': self.object.method.id
             }
         )
