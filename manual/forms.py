@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Section, Job, Item
+from .models import Section, Job, Item, Method
 
 
 class UserAddForm(UserCreationForm):
@@ -36,3 +36,9 @@ class CreateItemForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = ("item_name", "purpose", "success", )
+
+class CreateMethodForm(forms.ModelForm):
+    class Meta:
+        model = Method
+        fields = ("method_name", )
+

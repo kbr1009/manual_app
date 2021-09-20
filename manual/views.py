@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from .forms import UserAddForm, CreateSectionForm, CreateJobForm
-from .forms import CreateJobForm, CreateItemForm
+from .forms import CreateJobForm, CreateItemForm, CreateMethodForm
 from django.urls import reverse
 
 class SectionListView(LoginRequiredMixin, ListView):
@@ -269,37 +269,34 @@ class EditMethodListView(LoginRequiredMixin, ListView):
         context['item_pk'] = self.item
         return context
 
-"""
-///delete
-    def post(self, request, section_id, job_id):
+    def post(self, request, section_id, job_id, item_id):
         post_pks = request.POST.getlist('delete')
-        Item.objects.filter(pk__in=post_pks).delete()
-        return redirect('manual:edit_item_list', section_id, job_id)
-"""
+        Method.objects.filter(pk__in=post_pks).delete()
+        return redirect('manual:edit_method_list', section_id, job_id, item_id)
 
-"""
-class CreateItemView(LoginRequiredMixin, CreateView):
-    template_name = "manual/edit/item/create.html"
-    form_class = CreateItemForm
+class CreateMethodView(LoginRequiredMixin, CreateView):
+    template_name = "manual/edit/method/create.html"
+    form_class = CreateMethodForm
 
     def get_context_data(self, **kwargs):
-        job = self.job = get_object_or_404(Job, pk=self.kwargs['job_id'])
-        context = super(CreateItemView, self).get_context_data(**kwargs)
-        context['job_pk'] = self.job
+        item = self.item = get_object_or_404(Item, pk=self.kwargs['item_id'])
+        context = super(CreateMethodView, self).get_context_data(**kwargs)
+        context['item_pk'] = self.item
         return context
 
     def form_valid(self, form):
-        job_instance = get_object_or_404(Job, pk=self.kwargs['job_id'])
-        form.instance.job = job_instance
+        item_instance = get_object_or_404(Item, pk=self.kwargs['item_id'])
+        form.instance.item = item_instance
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('manual:edit_item_list', kwargs={
+        return reverse('manual:edit_method_list', kwargs={
             'section_id': self.kwargs.get('section_id'),
-            'job_id': self.kwargs.get('job_id')
+            'job_id': self.kwargs.get('job_id'),
+            'item_id': self.kwargs.get('item_id')
             }
         )
-
+"""
 class UpdateItemView(LoginRequiredMixin, UpdateView):
     template_name = 'manual/edit/item/update.html'
     model = Item

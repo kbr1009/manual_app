@@ -25,6 +25,7 @@ urlpatterns = [
     path('edit/section_create', views.CreateSectionView.as_view(), name = 'section_create'),
     path('edit/<int:section_id>/job_create', views.CreateJobView.as_view(), name = 'job_create'),
     path('edit/<int:section_id>/<int:job_id>/item_create', views.CreateItemView.as_view(), name = 'item_create'),
+    path('edit/<int:section_id>/<int:job_id>/<int:item_id>/method_create', views.CreateMethodView.as_view(), name = 'method_create'),
 
 #update
     path('edit/<int:pk>/section_update', views.UpdateSectionView.as_view(), name = 'section_update'),
