@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="{% url 'manual:top' %}">Home</a>
+    <a>/</a>
+    <a href="{% url 'manual:edit_section_list' %}">セクション(編集)</a>
+    <a>/ </a>
+    <a href="#">{{ job_pk.section }}</a>
+    <a>/ </a>
+    <a>{{ job_pk.job_name }}</a>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      {% for b in method_list %}
+      <a href="#">
+        <h3>{{ forloop.counter }}.{{ b.method_name }}<input type="checkbox" name="delete" value="{{ b.pk }}"></h3>
+      </a>
+      <a> - </a><a href="#">編集</a><a> - </a>
+      <a>{{ b.pk }}</a>
+      {% endfor %}
+      <div>
+        <button type="submit">選択した項目を削除</button>
+      </div>
+    </form>
+    <div>
+    </div>
+  </body>
+</html>
