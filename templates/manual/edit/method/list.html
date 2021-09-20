@@ -34,7 +34,7 @@
                       <a href="#">{{ b.method_name }}</a>
                     </td>
                     <td>
-                        <a href="#">編集</a>
+                      <a href="{% url 'manual:method_update' b.pk %}">編集</a>
                     </td>
                     <td>
                       <input type="checkbox" name="delete" value="{{ b.pk }}">
