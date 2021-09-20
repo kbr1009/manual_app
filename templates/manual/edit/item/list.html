@@ -6,7 +6,7 @@
     <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
     <li class="breadcrumb-item"><a href="{% url 'manual:edit_section_list' %}"><span style="color: var(--pink);">セクション編集</span></a></li>
     <li class="breadcrumb-item"><a href="{% url 'manual:edit_job_list' job_pk.section_id %}"><span style="color: var(--pink);">{{ job_pk.section }}の作業名</span></a></li>
-    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{job_pk.job_name}}の作業項目</span></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ job_pk.job_name }}の作業項目</span></li>
   </ol>
   <div class="row">
     <div class="container-fluid">
