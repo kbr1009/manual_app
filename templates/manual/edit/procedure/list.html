@@ -5,9 +5,10 @@
   <ol class="breadcrumb DestopView" style="background: rgba(233,236,239,0);">
     <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
     <li class="breadcrumb-item"><a href="{% url 'manual:edit_section_list' %}"><span style="color: var(--pink);">セクション編集</span></a></li>
-    <li class="breadcrumb-item"><a href="{% url 'manual:edit_job_list' item_pk.job.section_id %}"><span style="color: var(--pink);">{{ item_pk.job.section }}の作業名</span></a></li>
-    <li class="breadcrumb-item"><a href="{% url 'manual:edit_item_list' item_pk.job.section.id item_pk.job_id %}"><span style="color: var(--pink);">{{ item_pk.job.job_name }}の作業項目</span></a></li>
-    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ item_pk.item_name }}の作業方法</span></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_job_list' method_pk.item.job.section_id %}"><span style="color: var(--pink);">{{ method_pk.item.job.section }}の作業名</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_item_list' method_pk.item.job.section_id method_pk.item.job_id %}"><span style="color: var(--pink);">{{ method_pk.item.job.job_name }}の作業項目</span></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'manual:edit_method_list' method_pk.item.job.section_id method_pk.item.job_id method_pk.item_id %}"><span style="color: var(--pink);">{{ method_pk.item.item_name }}の作業方法</span></a></li>
+    <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ method_pk.method_name }}の作業手順</span></li>
   </ol>
   <div class="row">
     <div class="container-fluid">
@@ -17,27 +18,41 @@
             <table class="table my-0" id="dataTable">
               <thead>
                 <tr>
-                  <th style="width: 90px;border-style: none;border-bottom-style: none;">No</th>
-                  <th style="width: 1000px;border-style: none;border-bottom-style: none;">作業方法</th>
-                  <th style="width: 400px;border-style: none;"></th>
-                  <th style="width: 270px;border-style: none;"></th>
+                  <th style="width: 90px;border-style: none;font-size: 12px;">id</th>
+                  <th style="width: 500px;border-style: none;font-size: 12px;">手順名</th>
+                  <th style="width: 500px;border-style: none;font-size: 12px;">ポイント</th>
+                  <th style="width: 500px;border-style: none;font-size: 12px;">注意点</th>
+                  <th style="width: 400px;border-style: none;font-size: 12px;">コツ</th>
+                  <th style="width: 270px;border-style: none;font-size: 12px;">画像</th>
+                  <th style="width: 400px;border-style: none;font-size: 12px;">動画</th>
                 </tr>
               </thead>
               <tbody>
                 <form action="" method="POST">
-                  {% for b in method_list %}
+                  {% for b in procedure_list %}
                   <tr>
-                    <td>
-                      {{ forloop.counter }}
+                    <td style="font-size: 13px;">
+                      <input type="checkbox" name="delete" value="{{ b.pk }}"> {{ forloop.counter }}
                     </td>
-                    <td>
-                      <a href="#">{{ b.method_name }}</a>
+                    <td style="font-size: 12px;">
+                      <a href="{% url 'manual:procedure_update' b.pk %}">
+                        {{ b.procedure_name }}
+                      </a>
                     </td>
-                    <td>
-                      <a href="{% url 'manual:method_update' b.pk %}">編集</a>
+                    <td style="font-size: 12px;">
+                      {{ b.point }}
                     </td>
-                    <td>
-                      <input type="checkbox" name="delete" value="{{ b.pk }}">
+                    <td style="font-size: 12px;">
+                      {{ b.caution }}
+                    </td>
+                    <td style="font-size: 12px;">
+                      {{ b.tips }}
+                    </td>
+                    <td style="font-size: 12px;">
+                      {{ b.img }}
+                    </td>
+                    <td style="font-size: 12px;">
+                      {{ b.video }}
                     </td>
                   </tr>
                   {% csrf_token %}
@@ -47,15 +62,21 @@
           </div>
           <div class="row">
             <div class="col-md-6 align-self-center">
-              <button type="submit" class="btn btn-primary" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: rgba(78,115,223,0);">選択項目を削除</button>
+              <button class="btn btn-primary" type="submit" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: rgba(78,115,223,0);font-size: 13px;height: 30px;margin: 5px;">
+                選択項目を削除
+              </button>
                 </form>
-                <button onclick="location.href='{% url 'manual:method_create' item_pk.job.section_id item_pk.job_id item_pk.id %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">作業名を追加</button>
+                <button onclick="location.href='{% url 'manual:procedure_create' method_pk.item.job.section_id  method_pk.item.job_id method_pk.item_id method_pk.id %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;font-size: 13px;height: 30px;">作業手順を追加</button>
+
+                <button onclick="location.href='{% url 'manual:method_list' method_pk.item.job.section_id  method_pk.item.job_id method_pk.item_id %}'" class="btn btn-primary" type="button" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;font-size: 13px;height: 30px;">作成したマニュアル確認</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
 {% endblock %}
 
