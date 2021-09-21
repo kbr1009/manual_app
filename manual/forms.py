@@ -49,7 +49,7 @@ class CreateMethodForm(forms.ModelForm):
 class CreateProcedureForm(forms.ModelForm):
     class Meta:
         model = Procedure
-        fields = ("procedure_name", )
+        fields = ("procedure_name", "point" ,"caution", "tips", "img", "video", )
 
 
 
