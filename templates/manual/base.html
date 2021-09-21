@@ -43,7 +43,6 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link active" href="" style="font-size: 15px;font-family: Abel, sans-serif;">ログインユーザ : {{ user.last_name }}{{ user.first_name }} {% if user.is_superuser %}(管理者){% endif %}</a></li>
             {% if user.is_superuser %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}" style="font-size: 15px;font-family: Abel, sans-serif;">管理者画面</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'manual:user_list' %}" style="font-size: 15px;font-family: Abel, sans-serif;">ユーザ管理</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'manual:edit_section_list' %}" style="font-size: 15px;font-family: Abel, sans-serif;">マニュアル管理</a></li>
             {% endif %}
@@ -98,7 +97,7 @@ footer {
         new google.translate.TranslateElement({pageLanguage: 'ja', includedLanguages: 'vi,zh-CN,zh-TW', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true}, 'google_translate_element');
       }
     </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <div id="google_translate_element">
     </div>
   </body>
