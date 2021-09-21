@@ -15,7 +15,7 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">作業項目を追加</button>
+    <button type="submit" class="btn btn-primary" style="background: #fffa84;color: rgb(247,80,251);border-width: 0px;border-style: none;margin: 5px;">作業方法を追加</button>
   </form>
   <div>
     <button onclick="location.href='{% url 'manual:edit_method_list' item_pk.job.section_id item_pk.job_id item_pk.id %}'" class="btn btn-primary" type="button" style="background: #f75646;color: rgb(255,255,255);border-width: 0px;border-style: none;border-bottom-color: none;margin: 5px;">戻る</button>

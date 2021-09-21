@@ -15,10 +15,9 @@
             <table class="table my-0" id="dataTable">
               <thead>
                 <tr>
-                  <th style="width: 90px;border-style: none;border-bottom-style: none;">No</th>
-                  <th style="width: 1000px;border-style: none;border-bottom-style: none;">作業名</th>
-                  <th style="width: 400px;border-style: none;"></th>
-                  <th style="width: 270px;border-style: none;"></th>
+                  <th style="width: 100px;border-style: none;">No</th>
+                  <th style="width: 1000px;border-style: none;">作業名</th>
+                  <th style="width: 110px;border-style: none;"></th>
                 </tr>
               </thead>
               <tbody>
@@ -26,16 +25,13 @@
                   {% for b in job_list %}
                   <tr>
                     <td>
-                      {{ forloop.counter }}
+                      <input type="checkbox" name="delete" value="{{ b.pk }}"> {{ forloop.counter }}
                     </td>
                     <td>
                       <a href="{% url 'manual:edit_item_list' b.section_id b.pk%}">{{ b.job_name }}</a>
                     </td>
                     <td>
                         <a href="{% url 'manual:job_update' b.pk %}">編集</a>
-                    </td>
-                    <td>
-                      <input type="checkbox" name="delete" value="{{ b.pk }}">
                     </td>
                   </tr>
                   {% csrf_token %}
@@ -54,6 +50,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
 {% endblock %}
 

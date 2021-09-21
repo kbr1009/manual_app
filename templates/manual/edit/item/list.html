@@ -16,11 +16,10 @@
             <table class="table my-0" id="dataTable">
               <thead>
                 <tr>
-                  <th style="width: 70px;border-style: none;border-bottom-style: none;">No</th>
-                  <th style="width: 200px;border-style: none;">作業項目</th>
-                  <th style="width: 200px;border-style: none;">目的</th>
-                  <th style="width: 250px;border-style: none;border-bottom-style: none;">達成基準</th>
-                  <th style="width: 250px;border-style: none;"></th>
+                  <th style="width: 65px;border-style: none;">No</th>
+                  <th style="width: 210px;border-style: none;">作業項目</th>
+                  <th style="width: 180px;border-style: none;">目的</th>
+                  <th style="width: 180px;border-style: none;border-bottom-style: none;">達成基準</th>
                   <th style="width: 120px;border-style: none;"></th>
                 </tr>
               </thead>
@@ -29,12 +28,11 @@
                   {% csrf_token %}
                   {% for b in item_list %}
                   <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td><input type="checkbox" name="delete" value="{{ b.pk }}"> {{ forloop.counter }}</td>
                     <td><a href="{% url 'manual:edit_method_list' b.job.section_id b.job_id b.pk %}">{{ b.item_name }}</a></td>
                     <td>{{ b.purpose }}</td>
                     <td>{{ b.success }}</td>
                     <td><a href="{% url 'manual:item_update' b.pk %}">編集</a></td>
-                    <td><input type="checkbox" name="delete" value="{{ b.pk }}"></td>
                   </tr>
                   {% csrf_token %}
                   {% endfor %}
@@ -52,5 +50,8 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+<div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
 {% endblock %}
