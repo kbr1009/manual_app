@@ -370,7 +370,7 @@ class CreateProcedureView(LoginRequiredMixin, CreateView):
 class UpdateProcedureView(LoginRequiredMixin, UpdateView):
     template_name = 'manual/edit/procedure/update.html'
     model = Procedure
-    fields = ['procedure_name', ]
+    fields = ['procedure_name','point', 'caution', 'tips', 'img', 'video', ]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -378,8 +378,8 @@ class UpdateProcedureView(LoginRequiredMixin, UpdateView):
         return context
 
     def get_form(self):
-        form = super(UpdateMethodView, self).get_form()
-        form.fields['procedure_name'].label = '編集する作業手順'
+        form = super(UpdateProcedureView, self).get_form()
+        form.fields['procedure_name'].label = '作業手順'
         return form
 
     def get_success_url(self):
