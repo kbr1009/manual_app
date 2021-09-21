@@ -36,17 +36,17 @@
                     </td>
                     <td style="font-size: 12px;">
                       <a href="{% url 'manual:procedure_update' b.pk %}">
-                        {{ b.procedure_name }}
+                        {{ b.procedure_name | linebreaks }}
                       </a>
                     </td>
                     <td style="font-size: 12px;">
-                      {{ b.point }}
+                      {{ b.point | linebreaks }}
                     </td>
                     <td style="font-size: 12px;">
-                      {{ b.caution }}
+                      {{ b.caution | linebreaks }}
                     </td>
                     <td style="font-size: 12px;">
-                      {{ b.tips }}
+                      {{ b.tips | linebreaks }}
                     </td>
                     <td style="font-size: 12px;">
                       {{ b.img }}
