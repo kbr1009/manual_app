@@ -49,10 +49,18 @@
                       {{ b.tips | linebreaks }}
                     </td>
                     <td style="font-size: 12px;">
+                      {% if b.img %}
+                      <a href="{{ MEDIA_URL }}{{ b.img }}">
                       {{ b.img }}
+                      </a>
+                      {% endif %}
                     </td>
                     <td style="font-size: 12px;">
+                      {% if b.video %}
+                      <a href="{{ MEDIA_URL }}{{ b.video }}">
                       {{ b.video }}
+                      </a>
+                      {% endif %}
                     </td>
                   </tr>
                   {% csrf_token %}
