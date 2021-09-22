@@ -14,7 +14,8 @@ class UserAddForm(UserCreationForm):
                 'last_name',
                 'first_name',
                 'password1', 
-                'password2'
+                'password2',
+                'is_superuser',
                 ]
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
