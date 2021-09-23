@@ -34,7 +34,7 @@
                   <th style="width: 400px;border-style: none;font-size: 12px;">動画</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="sort">
                 <form action="" method="POST">
                   {% for b in procedure_list %}
                   <tr>
@@ -111,5 +111,11 @@
 </div>
 <div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
+<script>
+  $('.sort').sortable({
+    cursor: 'move',
+    axis: 'y',
+  });
+</script>
 {% endblock %}
 

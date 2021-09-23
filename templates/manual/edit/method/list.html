@@ -29,7 +29,7 @@
                   <th style="width: 110px;border-style: none;"></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="sort">
                 <form action="" method="POST">
                   {% for b in method_list %}
                   <tr>
@@ -62,5 +62,11 @@
 </div>
 <div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
+<script>
+  $('.sort').sortable({
+    cursor: 'move',
+    axis: 'y',
+  });
+</script>
 {% endblock %}
 
