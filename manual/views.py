@@ -383,7 +383,7 @@ class UpdateProcedureView(LoginRequiredMixin, UpdateView):
         return form
 
     def get_success_url(self):
-        return reverse('manual:edit_method_list', kwargs={
+        return reverse('manual:edit_procedure_list', kwargs={
             'section_id': self.object.method.item.job.section.id,
             'job_id': self.object.method.item.job.id,
             'item_id': self.object.method.item.id,
