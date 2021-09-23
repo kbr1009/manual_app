@@ -36,7 +36,7 @@
                   {% for b in item_list %}
                   <tr>
                     <td><input type="checkbox" name="delete" value="{{ b.pk }}"> {{ forloop.counter }}</td>
-                    <td><a href="{% url 'manual:edit_method_list' b.job.section_id b.job_id b.pk %}">{{ b.item_name }}</a><a> {{ b.the_order }}</a></td>
+                    <td><a href="{% url 'manual:edit_method_list' b.job.section_id b.job_id b.pk %}">{{ b.item_name }}</a></td>
                     <td>{{ b.purpose }}</td>
                     <td>{{ b.success }}</td>
                     <td><a href="{% url 'manual:item_update' b.pk %}">編集</a></td>
