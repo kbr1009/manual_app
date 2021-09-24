@@ -60,7 +60,7 @@
                             <strong class="border-primary" style="color: var(--gray-dark);border-radius: 32px;border: 1px none var(--pink);">
                               &nbsp;{{ forloop.counter }}.&nbsp;&nbsp;
                             </strong>
-                            {{ procedure.procedure_name | linebreaks }}
+                            {{ procedure.procedure_name | linebreaksbr }}
                           </small>
                         </div>
                       </div>
@@ -71,19 +71,19 @@
 
                           {% if procedure.point  %}
                           <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--blue);border-style: none;height: 30px;width: 87px;">ポイント</a>
-                            <p style="border-style: none;color: var(--blue);font-size: 16px;margin: 9px;">{{ procedure.point }}</p>
+                            <p style="border-style: none;color: var(--blue);font-size: 16px;margin: 9px;">{{ procedure.point | linebreaksbr }}</p>
                           </div>
                           {% endif %}
 
                           {% if procedure.caution %}
                           <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--red);border-style: none;height: 30px;width: 87px;">注意点</a>
-                            <p style="border-style: none;color: var(--red);font-size: 16px;margin: 9px;">{{ procedure.caution }}</p>
+                            <p style="border-style: none;color: var(--red);font-size: 16px;margin: 9px;">{{ procedure.caution | linebreaksbr }}</p>
                           </div>
                           {% endif %}
 
                           {% if procedure.tips %}
                           <div><a class="btn btn-primary btn-lg" style="font-size: 13px;background: var(--success);border-style: none;height: 30px;width: 87px;">コツ</a>
-                            <p style="border-style: none;color: var(--success);font-size: 16px;margin: 9px;">{{ procedure.tips }}</p>
+                            <p style="border-style: none;color: var(--success);font-size: 16px;margin: 9px;">{{ procedure.tips | linebreaksbr }}</p>
                           </div>
                           {% endif %}
 
