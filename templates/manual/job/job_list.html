@@ -20,7 +20,20 @@
     </div>
     {% endfor %}
   </div>
+<div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
+
+  {% if user.is_superuser %}
+  <div class="row">
+    <div class="col">
+      <h5>
+      <a href="{% url 'manual:edit_job_list' section_id.pk %}" ><strong>- 編集する -</strong></button></a>
+      </h5>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
 <div class="card-body" style="border-color: rgba(133,135,150,0);">
 </div>
 {% endblock %}

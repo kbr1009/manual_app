@@ -126,5 +126,24 @@
     </div>
   </div>
   {% endfor %}
+      <div class="col-md-12" style="background: rgba(255,255,255,0);border-radius: 5px;border: 2px solid rgba(255,255,255,0);">
+      <section style="height: 51px;padding: 10px;">
+        {% if user.is_superuser %}
+        <a href="{% url 'manual:edit_method_list' item.job.section_id item.job_id item.pk %}" class="fixed_btn">
+          <strong style="font-size: 18px;">
+            - 編集する -
+          </strong>
+        </a>
+        {% endif %}
+      </section>
+    </div>
 </div>
+<style>
+.fixed_btn
+{
+  position: fixed;
+  bottom: 70px; 
+  right: 10px;
+}
+</style>
 {% endblock %}
