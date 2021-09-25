@@ -6,6 +6,13 @@
     <li class="breadcrumb-item"><a href="{% url 'manual:top' %}"><span style="color: var(--pink);">Home</span></a></li>
     <li class="breadcrumb-item active"><span style="color: var(--secondary);">{{ section_id }}</span></li>
   </ol>
+
+  <div class="row">
+    <div class="col-md-12" style="background: rgba(255,255,255,0);">
+      <h3 style="text-align: center;font-size: 20px;color: var(--pink);margin: 0px;border-color: var(--pink);"><strong>- {{ section_id }} -</strong></h3>
+    </div>
+  </div>
+
   <div class="row">
     {% for b in job_list %}
     <div class="col-md-3" style="height: 140px;">
@@ -20,14 +27,14 @@
     </div>
     {% endfor %}
   </div>
-<div class="card-body" style="border-color: rgba(133,135,150,0);">
-</div>
+  <div class="card-body" style="border-color: rgba(133,135,150,0);">
+  </div>
 
   {% if user.is_superuser %}
   <div class="row">
     <div class="col">
       <h5>
-      <a href="{% url 'manual:edit_job_list' section_id.pk %}" ><strong>- 編集する -</strong></button></a>
+        <a href="{% url 'manual:edit_job_list' section_id.pk %}" ><strong>- 編集する -</strong></button></a>
       </h5>
     </div>
   </div>
